@@ -1,0 +1,15 @@
+﻿@using Jmelosegui.Mvc.GoogleMap
+@model String
+@{
+    Html.GoogleMap()
+        .Name("addressMap")
+        .Height(600)
+        .Zoom(15)
+        .Center(c => c.Address(Model))
+        .ClientEvents(events => events
+            .OnMapClick("mapAddressClick")
+            .OnMapLoaded("mapAddressLoaded")
+        )
+        .Render();
+}
+@(Html.GoogleMap().ScriptRegistrar())
