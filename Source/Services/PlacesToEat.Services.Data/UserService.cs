@@ -2,20 +2,21 @@
 {
     using System;
     using System.Linq;
+    using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models.Users;
 
-    public class UserService : IUsersService
+    public class UserService : IUserService
     {
-        //private readonly IDbRepository<ApplicationUser, string> users;
+        private readonly IDbUserRepository<User> users;
 
-        //public UserService(IDbRepository<ApplicationUser, string> users)
-        //{
-        //    this.users = users;
-        //}
+        public UserService(IDbUserRepository<User> users)
+        {
+            this.users = users;
+        }
 
         public IQueryable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return this.users.All();
         }
     }
 }

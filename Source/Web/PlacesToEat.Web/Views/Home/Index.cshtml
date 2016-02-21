@@ -1,4 +1,14 @@
-﻿@{
+﻿@model IEnumerable<PlacesToEat.Data.Models.Users.RegularUser>
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="jumbotron">Welcome</div>
+
+@foreach(var user in Model)
+{
+    <div class="row">@user.UserName</div>
+    <div class="row">@user.CreatedOn</div>
+    <div class="row">@user.FirstName</div>
+    <div class="row">@user.LastName</div>
+    <br/>
+}

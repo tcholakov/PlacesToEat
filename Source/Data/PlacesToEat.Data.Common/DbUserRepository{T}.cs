@@ -2,13 +2,14 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
     using Models;
 
-    public class DbRepository<T, Tkey> : IDbRepository<T, Tkey>
-        where T : BaseModel<Tkey>
+    public class DbUserRepository<T> : IDbUserRepository<T>
+        where T : class, IAuditInfo, IDeletableEntity
     {
-        public DbRepository(DbContext context)
+        public DbUserRepository(DbContext context)
         {
             if (context == null)
             {
@@ -25,23 +26,23 @@
 
         public IQueryable<T> All()
         {
-            return this.DbSet.Where(x => !x.IsDeleted);
+            return this.DbSet.AsQueryable().Where(x => !x.IsDeleted);
         }
 
         public IQueryable<T> AllWithDeleted()
         {
-            return this.DbSet;
-        }
-
-        public void Add(T entity)
-        {
-            this.DbSet.Add(entity);
+            return this.DbSet.AsQueryable();
         }
 
         public void Delete(T entity)
         {
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.Now;
+        }
+
+        public T GetById(string id)
+        {
+            return this.DbSet.Find(id);
         }
 
         public void HardDelete(T entity)
@@ -52,11 +53,6 @@
         public void Save()
         {
             this.Context.SaveChanges();
-        }
-
-        public T GetById(Tkey id)
-        {
-            return this.All().FirstOrDefault(x => x.Id.Equals(id));
         }
     }
 }

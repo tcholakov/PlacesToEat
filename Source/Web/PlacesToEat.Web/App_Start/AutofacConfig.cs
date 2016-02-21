@@ -57,11 +57,15 @@
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
-            var servicesAssembly = Assembly.GetAssembly(typeof(IUsersService));
+            var servicesAssembly = Assembly.GetAssembly(typeof(IUserService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
+                .InstancePerRequest();
+
+            builder.RegisterGeneric(typeof(DbUserRepository<>))
+                .As(typeof(IDbUserRepository<>))
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

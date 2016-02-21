@@ -3,7 +3,7 @@
     using System.Linq;
     using PlacesToEat.Data.Models.Users;
 
-    public interface IUsersService
+    public interface IUserService
     {
         IQueryable<User> GetAll();
     }

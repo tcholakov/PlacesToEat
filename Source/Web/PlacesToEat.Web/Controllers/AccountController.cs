@@ -9,6 +9,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using PlacesToEat.Web.ViewModels.Account;
+    using System;
 
     [Authorize]
     public class AccountController : BaseController
