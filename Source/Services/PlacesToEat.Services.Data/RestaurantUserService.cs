@@ -4,16 +4,16 @@
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models.Users;
 
-    public class RegularUserService : IRegularUserService
+    public class RestaurantUserService : IRestaurantUserService
     {
-        private readonly IDbUserRepository<RegularUser> users;
+        private readonly IDbUserRepository<RestaurantUser> users;
 
-        public RegularUserService(IDbUserRepository<RegularUser> users)
+        public RestaurantUserService(IDbUserRepository<RestaurantUser> users)
         {
             this.users = users;
         }
 
-        public IQueryable<RegularUser> GetAll()
+        public IQueryable<RestaurantUser> GetAll()
         {
             return this.users.All();
         }

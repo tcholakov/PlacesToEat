@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class RetaurantUser : User
+    public class RestaurantUser : User
     {
         [MinLength(1)]
         [MaxLength(150)]

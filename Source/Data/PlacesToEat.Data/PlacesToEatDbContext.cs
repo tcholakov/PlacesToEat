@@ -7,7 +7,7 @@
     using Common.Models;
 
     using Microsoft.AspNet.Identity.EntityFramework;
-    
+
     using Models.Users;
 
     public class PlacesToEatDbContext : IdentityDbContext<User>
@@ -19,7 +19,7 @@
 
         public IDbSet<RegularUser> RegualarUsers { get; set; }
 
-        public IDbSet<RetaurantUser> Restaurants { get; set; }
+        public IDbSet<RestaurantUser> RestaurantUsers { get; set; }
 
         public static PlacesToEatDbContext Create()
         {

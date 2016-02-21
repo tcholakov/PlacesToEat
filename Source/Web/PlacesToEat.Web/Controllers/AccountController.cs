@@ -1,5 +1,6 @@
 ﻿namespace PlacesToEat.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
@@ -9,7 +10,6 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using PlacesToEat.Web.ViewModels.Account;
-    using System;
 
     [Authorize]
     public class AccountController : BaseController
@@ -207,7 +207,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new RetaurantUser { UserName = model.Email, Email = model.Email, Name = model.Name, Address = model.Address, Latitude = model.Latitude, Longitude = model.Longitude };
+                var user = new RestaurantUser { UserName = model.Email, Email = model.Email, Name = model.Name, Address = model.Address, Latitude = model.Latitude, Longitude = model.Longitude };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
