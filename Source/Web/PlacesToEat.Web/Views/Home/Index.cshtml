@@ -1,7 +1,18 @@
-﻿@model double?
+﻿@using Jmelosegui.Mvc.GoogleMap
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
-<div class="jumbotron">Welcome</div>
 
-Disctance: @Model km
+<h2>@ViewBag.Title</h2>
+
+<div id="mapContainer">
+    @Html.Partial("~/Views/GoogleMaps/_GetCurrentLocationPartial.cshtml")
+</div>
+
+@section Scripts {
+    @(Html.GoogleMap().ScriptRegistrar(scripts =>
+    {
+        scripts.Add("jmelosegui.googlemap.js");
+        scripts.Add("custom-google-map.js");
+    }))
+}

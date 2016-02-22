@@ -39,6 +39,19 @@ function mapCurrentLocationLoaded(args) {
     $('#lng-id').val(lng);
 }
 
+function mapSendCurrentLocation(args) {
+    var lat = args.map.center.lat();
+    var lng = args.map.center.lng();
+
+    console.log("lol");
+
+    map.ajax({
+        url: '/Restaurant/ClosestRestaurants',
+        type: 'Get',
+        data: { latitude: lat, longitude: lng }
+    })
+}
+
 function mapAddressLoaded(args) {
     placeMarker(args.map.center, args.map, addressName);
 

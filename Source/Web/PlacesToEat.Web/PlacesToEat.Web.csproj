@@ -207,6 +207,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +232,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Restaurant\RestaurantMapViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -299,6 +301,8 @@
     <Content Include="Views\Account\RegisterRestaurant.cshtml" />
     <Content Include="Views\GoogleMaps\_GoogleMapsCurrentLocationPartial.cshtml" />
     <Content Include="Views\GoogleMaps\_GoogleMapsAddressPartialView.cshtml" />
+    <Content Include="Views\GoogleMaps\_GoogleMapsListRestaurantsPartial.cshtml" />
+    <Content Include="Views\GoogleMaps\_GetCurrentLocationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

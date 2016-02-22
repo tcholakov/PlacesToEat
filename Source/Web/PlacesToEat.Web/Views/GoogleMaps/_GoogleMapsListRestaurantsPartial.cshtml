@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PlacesToEat.Web.ViewModels.Restaurant.RestaurantMapViewModel>
+@using Jmelosegui.Mvc.GoogleMap
+@{
+    Html.GoogleMap()
+        .Name("nearestRestaurants")
+        .Height(600)
+        .Zoom(15)
+        .Center(c => c.UseCurrentPosition())
+        .BindTo<PlacesToEat.Web.ViewModels.Restaurant.RestaurantMapViewModel, Marker>(Model, mappings => mappings.For<PlacesToEat.Web.ViewModels.Restaurant.RestaurantMapViewModel>(
+             (binding => binding.ItemDataBound((marker, restaurant) =>
+             {
+                 marker.Latitude = restaurant.Latitude;
+                 marker.Longitude = restaurant.Longitude;
+                 marker.Title = restaurant.Name;
+                 marker.Window = new InfoWindow(marker)
+                 {
+                     Template =
+                    {
+                        Html = "<text><div><h5>"+restaurant.Name+"</h5></div></text>"
+                    }
+                 };
+             }))))
+            .ClientEvents(events => events
+                .OnMapLoaded("mapCurrentLocationLoaded")
+            )
+            .Render();
+
+}
+@(Html.GoogleMap().ScriptRegistrar())

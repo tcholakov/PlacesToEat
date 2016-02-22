@@ -12,7 +12,7 @@
     using Data;
     using Data.Common;
 
-    using Services.Data;
+    using Services.Data.UserServices;
     using Services.Web;
 
     public static class AutofacConfig

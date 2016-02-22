@@ -1,0 +1,12 @@
+﻿@using Jmelosegui.Mvc.GoogleMap
+@{
+    Html.GoogleMap()
+        .Name("currentLocationMap")
+        .Center(c => c.UseCurrentPosition())
+        .ClientEvents(events => events
+            .OnMapLoaded("mapSendCurrentLocation")
+        )
+        .Render();
+}
+@(Html.GoogleMap().ScriptRegistrar())
+
