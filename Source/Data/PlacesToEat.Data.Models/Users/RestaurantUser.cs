@@ -7,10 +7,12 @@
     public class RestaurantUser : User
     {
         private ICollection<RegularUser> regularUsers;
+        private ICollection<Comment> comments;
 
         public RestaurantUser()
         {
             this.regularUsers = new HashSet<RegularUser>();
+            this.comments = new HashSet<Comment>();
         }
 
         [MinLength(1)]
@@ -35,6 +37,12 @@
         {
             get { return this.regularUsers; }
             set { this.regularUsers = value; }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
     }
 }

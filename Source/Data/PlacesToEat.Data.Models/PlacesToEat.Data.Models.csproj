@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="Users\RegularUser.cs" />
     <Compile Include="Users\RestaurantUser.cs" />
     <Compile Include="Users\User.cs" />

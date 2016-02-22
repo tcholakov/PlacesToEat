@@ -27,3 +27,7 @@ textarea {
     height: 600px; 
     border: solid 1px #cccccc;
 }
+
+.text-strong {
+    font-weight: bold;
+}

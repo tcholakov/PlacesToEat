@@ -29,5 +29,11 @@
 
             return this.Redirect("/");
         }
+
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            return this.View();
+        }
     }
 }

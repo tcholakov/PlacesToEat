@@ -21,6 +21,8 @@
 
         public IDbSet<Category> Categories { get; set; }
 
+        public IDbSet<Comment> Comments { get; set; }
+
         public static PlacesToEatDbContext Create()
         {
             return new PlacesToEatDbContext();

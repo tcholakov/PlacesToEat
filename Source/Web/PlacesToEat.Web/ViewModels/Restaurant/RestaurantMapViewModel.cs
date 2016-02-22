@@ -1,16 +1,18 @@
 ﻿namespace PlacesToEat.Web.ViewModels.Restaurant
 {
+    using System;
+    using AutoMapper;
     using Data.Models.Users;
     using Infrastructure.Mapping;
 
-    public class RestaurantMapViewModel : IMapFrom<RestaurantUser>
+    public class RestaurantMapViewModel : RestaurantBaseViewModel
     {
-        public string Name { get; set; }
-
-        public string Address { get; set; }
-
-        public double Latitude { get; set; }
-
-        public double Longitude { get; set; }
+        public string Url
+        {
+            get
+            {
+                return string.Format("/Restaurant/Details/{0}", this.Id);
+            }
+        }
     }
 }

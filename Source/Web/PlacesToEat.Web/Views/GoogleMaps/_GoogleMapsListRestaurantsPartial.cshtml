@@ -16,7 +16,16 @@
                  {
                      Template =
                     {
-                        Html = "<text><div><h5>"+restaurant.Name+"</h5></div></text>"
+                        Html = @"<text>
+                                    <div>
+                                        <h4><a href='"+restaurant.Url+"'>"+restaurant.Name+"</a></h4>"
+                                        +"<p><span class='text-strong'>Category: </span>"+restaurant.Category+"</p>"
+                                        +"<p><span class='text-strong'>Address: </span>"+restaurant.Address+"</p>"
+                                        +"<p><span class='text-strong'>E-mail: </span>"+restaurant.Email+"</p>"
+                                        +"<p><span class='text-strong'>Phone number: </span>"+restaurant.PhoneNumber+"</p>"
+                                        +"<p><span class='text-strong'>Favourited by: </span>"+restaurant.FavouritedBy+" users</p>"
+                                 +"</div>"
+                              +"</text>"
                     }
                  };
              }))))
