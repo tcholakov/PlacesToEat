@@ -9,7 +9,6 @@
 
     public class RestaurantController : BaseController
     {
-
         private readonly IRestaurantUserService restaurantUsers;
 
         public RestaurantController(IRestaurantUserService restaurantUsers)

@@ -3,15 +3,11 @@
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
-
     using Autofac;
     using Autofac.Integration.Mvc;
-
     using Controllers;
-
     using Data;
     using Data.Common;
-
     using Services.Data.UserServices;
     using Services.Web;
 
@@ -57,9 +53,11 @@
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
-            var servicesAssembly = Assembly.GetAssembly(typeof(IUserService));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            var userServicesAssembly = Assembly.GetAssembly(typeof(IUserService));
+            builder.RegisterAssemblyTypes(userServicesAssembly).AsImplementedInterfaces();
 
+            // var servicesAssembly = Assembly.GetAssembly(typeof(ICategoryService));
+            // builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();

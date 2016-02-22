@@ -1,15 +1,22 @@
 ﻿namespace PlacesToEat.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using Data;
+    using Data.Common;
+    using Data.Models;
     using Data.Models.Users;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using PlacesToEat.Web.ViewModels.Account;
+    using Services.Data;
+    using ViewModels.Category;
 
     [Authorize]
     public class AccountController : BaseController
@@ -25,7 +32,7 @@
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ICategoryService categories)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
@@ -83,7 +90,7 @@
             var result =
                 await
                 this.SignInManager.PasswordSignInAsync(
-                    model.Email,
+                    model.UserName,
                     model.Password,
                     model.RememberMe,
                     shouldLockout: false);
@@ -169,7 +176,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new RegularUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                var user = new RegularUser { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -207,7 +214,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new RestaurantUser { UserName = model.Email, Email = model.Email, Name = model.Name, Address = model.Address, Latitude = model.Latitude, Longitude = model.Longitude };
+                var user = new RestaurantUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Name = model.Name, Address = model.Address, Latitude = model.Latitude, Longitude = model.Longitude };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

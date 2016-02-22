@@ -4,6 +4,7 @@
     using System.Linq;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using Models.Users;
 
     public sealed class Configuration : DbMigrationsConfiguration<PlacesToEatDbContext>
@@ -24,6 +25,60 @@
                 roleManager.Create(new IdentityRole { Name = "Regular" });
                 roleManager.Create(new IdentityRole { Name = "Restaurant" });
                 roleManager.Create(new IdentityRole { Name = "Administrator" });
+            }
+
+            if (!context.Categories.Any())
+            {
+                var category = new Category
+                {
+                    Name = "All"
+                };
+
+                context.Categories.Add(category);
+
+                category = new Category
+                {
+                    Name = "Fast Food"
+                };
+
+                context.Categories.Add(category);
+
+                category = new Category
+                {
+                    Name = "Casual"
+                };
+
+                context.Categories.Add(category);
+
+                category = new Category
+                {
+                    Name = "Steak House"
+                };
+
+                context.Categories.Add(category);
+
+                category = new Category
+                {
+                    Name = "Bar"
+                };
+
+                context.Categories.Add(category);
+
+                category = new Category
+                {
+                    Name = "Chinese Food"
+                };
+
+                context.Categories.Add(category);
+
+                category = new Category
+                {
+                    Name = "Italian Food"
+                };
+
+                context.Categories.Add(category);
+
+                context.SaveChanges();
             }
         }
     }

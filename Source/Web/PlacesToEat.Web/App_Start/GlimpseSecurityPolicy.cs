@@ -28,5 +28,4 @@ namespace PlacesToEat.Web
             get { return RuntimeEvent.EndRequest | RuntimeEvent.ExecuteResource; }
         }
     }
-}
-*/
+}*/

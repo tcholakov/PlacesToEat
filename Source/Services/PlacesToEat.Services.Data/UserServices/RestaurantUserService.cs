@@ -28,5 +28,22 @@
                 .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
                 .AsQueryable<RestaurantUser>();
         }
+
+        public int? GetCurrentCategoryId(string restaurantId)
+        {
+            var restaurant = this.restaurants.GetById(restaurantId);
+            var categoryId = restaurant.CategoryId;
+
+            return categoryId;
+        }
+
+        public void UpdateCategory(int categoryId, string restaurantId)
+        {
+            var restaurant = this.restaurants.GetById(restaurantId);
+
+            restaurant.CategoryId = categoryId;
+
+            this.restaurants.Save();
+        }
     }
 }

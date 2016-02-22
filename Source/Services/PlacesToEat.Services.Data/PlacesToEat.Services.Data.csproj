@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryService.cs" />
+    <Compile Include="ICategoryService.cs" />
     <Compile Include="UserServices\IRegularUserService.cs" />
     <Compile Include="UserServices\IRestaurantUserService.cs" />
     <Compile Include="UserServices\IUserService.cs" />

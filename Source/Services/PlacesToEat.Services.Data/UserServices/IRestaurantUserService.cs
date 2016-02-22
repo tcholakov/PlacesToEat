@@ -8,5 +8,9 @@
         IQueryable<RestaurantUser> GetAll();
 
         IQueryable<RestaurantUser> GetClosest(double currentLatitude, double currentLongitude, double distanceInKilometeres);
+
+        void UpdateCategory(int categoryId, string restaurantId);
+
+        int? GetCurrentCategoryId(string restaurantId);
     }
 }
