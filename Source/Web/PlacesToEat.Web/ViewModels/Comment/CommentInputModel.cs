@@ -4,6 +4,7 @@
 
     public class CommentInputModel
     {
+        [Required]
         [MinLength(3)]
         [MaxLength(500)]
         [DataType(DataType.MultilineText)]
