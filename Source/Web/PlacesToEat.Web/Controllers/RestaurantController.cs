@@ -8,6 +8,7 @@
     using Services.Data;
     using Services.Data.UserServices;
     using ViewModels.Comment;
+    using ViewModels.RegularUser;
     using ViewModels.Restaurant;
 
     public class RestaurantController : BaseController
@@ -52,7 +53,7 @@
                 Email = restaurant.Email,
                 Name = restaurant.Name,
                 PhoneNumber = restaurant.PhoneNumber,
-                FavouritedBy = restaurant.RegularUsers.Count,
+                Favourites = restaurant.RegularUsers.AsQueryable().To<RegularUserViewModel>().ToList(),
                 Comments = restaurant.Comments.AsQueryable().To<CommentViewModel>().ToList()
             };
 

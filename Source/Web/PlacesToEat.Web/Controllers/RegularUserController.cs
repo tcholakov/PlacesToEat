@@ -22,5 +22,15 @@
 
             return this.RedirectToAction("Details", "Restaurant", new { id = restaurantId });
         }
+
+        public ActionResult Unfavourite(string id)
+        {
+            var restaurantId = id;
+            var userId = this.User.Identity.GetUserId();
+
+            this.users.Unfavourite(userId, restaurantId);
+
+            return this.RedirectToAction("Details", "Restaurant", new { id = restaurantId });
+        }
     }
 }

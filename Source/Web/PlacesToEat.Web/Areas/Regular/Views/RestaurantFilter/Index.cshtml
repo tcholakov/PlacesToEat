@@ -1,0 +1,22 @@
+﻿@model PlacesToEat.Web.Areas.Regular.ViewModels.RestaurantFilterViewModel
+@using Jmelosegui.Mvc.GoogleMap
+@{
+    ViewBag.Title = "Restaurants in your area";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.Hidden("category-id", Model.CategoryId)
+@Html.Hidden("search", Model.Search)
+@Html.Hidden("distance", Model.Distance)
+
+<div id="mapContainer">
+    @Html.Partial("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterPartial.cshtml")
+</div>
+
+@section Scripts {
+    @(Html.GoogleMap().ScriptRegistrar(scripts =>
+    {
+        scripts.Add("jmelosegui.googlemap.js");
+        scripts.Add("custom-google-map.js");
+    }))
+}

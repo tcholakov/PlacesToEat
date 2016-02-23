@@ -6,7 +6,7 @@
     {
         public ActionResult GoogleMapsAddressPartial(string address)
         {
-            return this.PartialView("_GoogleMapsAddressPartialView", (object)address);
+            return this.PartialView("_GoogleMapsAddressPartial", (object)address);
         }
     }
 }

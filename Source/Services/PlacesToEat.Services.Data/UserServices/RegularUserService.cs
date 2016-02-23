@@ -22,7 +22,16 @@
             var restaurant = this.restaurants.GetById(restaurantId);
 
             user.FavouriteRestaurants.Add(restaurant);
-            //restaurant.RegularUsers.Add(user);
+
+            this.users.Save();
+        }
+
+        public void Unfavourite(string userId, string restaurantId)
+        {
+            var user = this.users.GetById(userId);
+            var restaurant = this.restaurants.GetById(restaurantId);
+
+            user.FavouriteRestaurants.Remove(restaurant);
 
             this.users.Save();
         }

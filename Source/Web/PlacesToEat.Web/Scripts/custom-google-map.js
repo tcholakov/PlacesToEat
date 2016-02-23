@@ -43,12 +43,25 @@ function mapSendCurrentLocation(args) {
     var lat = args.map.center.lat();
     var lng = args.map.center.lng();
 
-    console.log("lol");
-
     map.ajax({
         url: '/Restaurant/ClosestRestaurants',
         type: 'Get',
         data: { latitude: lat, longitude: lng }
+    })
+}
+
+function mapSendFilter(args) {
+    var lat = args.map.center.lat();
+    var lng = args.map.center.lng();
+
+    var categoryId = $('#category-id').val();
+    var distance = $('#distance').val();
+    var search = $('#search').val();
+
+    map.ajax({
+        url: '/Regular/RestaurantFilter/FilteredRestaurants',
+        type: 'Get',
+        data: { latitude: lat, longitude: lng, categoryId: categoryId, distance: distance, search: search }
     })
 }
 

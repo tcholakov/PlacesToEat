@@ -8,5 +8,7 @@
         IQueryable<RegularUser> GetAll();
 
         void Favourite(string userId, string restaurantId);
+
+        void Unfavourite(string userId, string restaurantId);
     }
 }

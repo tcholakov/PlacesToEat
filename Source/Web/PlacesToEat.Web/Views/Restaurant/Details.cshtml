@@ -1,4 +1,5 @@
 ﻿@model PlacesToEat.Web.ViewModels.Restaurant.RestaurantDetailedViewModel
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Restaurant Details";
 }
@@ -8,12 +9,21 @@
 <div class="row">
     <div class="col-md-4">
         <div class="well text-center">
-            <div class="row"><span class="text-info">Favourited by</span> @Model.FavouritedBy <span class="text-info">users</span></div>
+            <div class="row"><span class="text-info">Favourited by</span> @Model.Favourites.Count <span class="text-info">users</span></div>
             @if (this.User.IsInRole("Regular"))
             {
-                <div class="row">
-                    @Html.ActionLink("Favourite", "Favourite", "RegularUser", new { id = Model.Id }, new { @class = "btn btn-info" })
-                </div>
+                if (Model.Favourites.Any(x => x.Id == this.User.Identity.GetUserId()))
+                {
+                    <div class="row">
+                        @Html.ActionLink("Unfavourite", "Unfavourite", "RegularUser", new { id = Model.Id }, new { @class = "btn btn-info" })
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        @Html.ActionLink("Favourite", "Favourite", "RegularUser", new { id = Model.Id }, new { @class = "btn btn-info" })
+                    </div>
+                }
             }
         </div>
     </div>

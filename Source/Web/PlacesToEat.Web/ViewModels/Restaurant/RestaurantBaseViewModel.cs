@@ -1,8 +1,10 @@
 ﻿namespace PlacesToEat.Web.ViewModels.Restaurant
 {
+    using System.Collections.Generic;
     using AutoMapper;
     using PlacesToEat.Data.Models.Users;
     using PlacesToEat.Web.Infrastructure.Mapping;
+    using RegularUser;
 
     public class RestaurantBaseViewModel : IMapFrom<RestaurantUser>, IHaveCustomMappings
     {
@@ -18,7 +20,7 @@
 
         public string Email { get; set; }
 
-        public int FavouritedBy { get; set; }
+        public ICollection<RegularUserViewModel> Favourites { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
@@ -26,7 +28,7 @@
                 .ForMember(x => x.Category, opts => opts.MapFrom(x => x.Category.Name));
 
             configuration.CreateMap<RestaurantUser, RestaurantMapViewModel>()
-                .ForMember(x => x.FavouritedBy, opts => opts.MapFrom(x => x.RegularUsers.Count));
+                .ForMember(x => x.Favourites, opts => opts.MapFrom(x => x.RegularUsers));
         }
     }
 }

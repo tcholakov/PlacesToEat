@@ -1,0 +1,11 @@
+﻿@using Jmelosegui.Mvc.GoogleMap
+@{
+    Html.GoogleMap()
+        .Name("filterMap")
+        .Center(c => c.UseCurrentPosition())
+        .ClientEvents(events => events
+            .OnMapLoaded("mapSendFilter")
+        )
+        .Render();
+}
+@(Html.GoogleMap().ScriptRegistrar())
