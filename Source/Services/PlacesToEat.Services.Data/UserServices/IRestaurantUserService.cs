@@ -12,5 +12,7 @@
         void UpdateCategory(int categoryId, string restaurantId);
 
         int? GetCurrentCategoryId(string restaurantId);
+
+        RestaurantUser GetById(string restaurantId);
     }
 }

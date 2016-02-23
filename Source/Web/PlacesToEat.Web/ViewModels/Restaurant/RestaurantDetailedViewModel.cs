@@ -1,10 +1,10 @@
 ﻿namespace PlacesToEat.Web.ViewModels.Restaurant
 {
-    using AutoMapper;
-    using Data.Models.Users;
-    using Infrastructure.Mapping;
+    using System.Collections.Generic;
+    using Comment;
 
     public class RestaurantDetailedViewModel : RestaurantBaseViewModel
     {
+        public ICollection<CommentViewModel> Comments { get; set; }
     }
 }

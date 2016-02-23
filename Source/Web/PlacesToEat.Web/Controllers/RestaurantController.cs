@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using Infrastructure.Mapping;
     using Services.Data.UserServices;
+    using ViewModels.Comment;
     using ViewModels.Restaurant;
 
     public class RestaurantController : BaseController
@@ -33,7 +34,25 @@
         [HttpGet]
         public ActionResult Details(string id)
         {
-            return this.View();
+            if (id == null)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            var restaurant = this.restaurantUsers.GetById(id);
+            var restaurantView = new RestaurantDetailedViewModel
+            {
+                Id = restaurant.Id,
+                Address = restaurant.Address,
+                Category = restaurant.Category.Name,
+                Email = restaurant.Email,
+                Name = restaurant.Name,
+                PhoneNumber = restaurant.PhoneNumber,
+                FavouritedBy = restaurant.RegularUsers.Count,
+                Comments = restaurant.Comments.AsQueryable().To<CommentViewModel>().ToList()
+            };
+
+            return this.View(restaurantView);
         }
     }
 }

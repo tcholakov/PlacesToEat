@@ -30,7 +30,7 @@ function mapAddressClick(args) {
 
 
 function mapCurrentLocationLoaded(args) {
-    placeMarker(args.map.center, args.map, 'Your location');
+    placeMarker(args.map.center, args.map, '<span class="text-strong">Your location</span>');
 
     var lat = args.map.center.lat();
     var lng = args.map.center.lng();

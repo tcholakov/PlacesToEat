@@ -5,4 +5,109 @@
 
 <h2>@ViewBag.Title</h2>
 
+<div class="row">
+    <div class="col-md-4">
+        <div class="well text-center">
+            <div class="row"><span class="text-info">Favourited by</span> @Model.FavouritedBy <span class="text-info">users</span></div>
+            <div class="row"></div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <h3>
+                @Model.Name
+            </h3>
+        </div><div class="row">
+            <span class="text-info">Category</span><p>@Model.Category</p>
+        </div>
+        <div class="row">
+            <span class="text-info">Address</span><p>@Model.Address</p>
+        </div>
+        <div class="row">
+            <span class="text-info">Phone number</span><p>@Model.PhoneNumber</p>
+        </div>
+        <div class="row">
+            <span class="text-info">E-mail</span><p>@Model.Email</p>
+        </div>
+        <div class="row">
+            <span class="text-info">@Model.Comments.Count comments</span>
+        </div>
+    </div>
+</div>
+@if (this.User.IsInRole("Regular"))
+{
+    @*<div class="row">
+        @using (Ajax.BeginForm("PostComment", "Idea", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>I suggest you...</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div>
+                    @Html.HiddenFor(m => m.Id);
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    @Html.EditorFor(m => m.CommentInputModel.Content, new { htmlAttributes = new { @class = "form-control", placeholder = "Add comment..." } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    @Html.EditorFor(m => m.CommentInputModel.AuthorEmail, new { htmlAttributes = new { @class = "form-control", placeholder = "Your email address" } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Post comment" />
+                </div>
+            </div>
+        }
+    </div>*@
+}
+    @*<div class="row">
+            @foreach (var comment in Model.CommentsToDisplay)
+            {
+                <div class="row">
+                    <span><b>@comment.HidenAuthorEmail</b> <span class="text-info"> commented @comment.ViewCreatedOn</span></span>
+                    <div>
+                        <p>@comment.Content</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <nav>
+            <ul class="pagination">
+                @if (Model.CurrentPage > 1)
+                    {
+                    <li>
+                        <a href="@Model.Url/@(Model.CurrentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        var className = string.Empty;
+                        if (Model.CurrentPage == i)
+                        {
+                            className = "active";
+                        }
+                        <li class="@className"><a href="@Model.Url/@i">@i</a></li>
+                }
+                @if (Model.CurrentPage < Model.TotalPages)
+                    {
+                    <li>
+                        <a href="@Model.Url/@(Model.CurrentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>*@
+    @**@
 
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

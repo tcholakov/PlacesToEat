@@ -20,6 +20,11 @@
             return this.restaurants.All();
         }
 
+        public RestaurantUser GetById(string restaurantId)
+        {
+            return this.restaurants.GetById(restaurantId);
+        }
+
         public IQueryable<RestaurantUser> GetClosest(double currentLatitude, double currentLongitude, double distanceInKilometeres)
         {
             return this.restaurants
