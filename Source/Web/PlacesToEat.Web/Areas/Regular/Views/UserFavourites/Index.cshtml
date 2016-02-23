@@ -1,0 +1,57 @@
+﻿@model PlacesToEat.Web.Areas.Regular.ViewModels.UserFavourites.UserFavouritesViewModel
+@{
+    ViewBag.Title = "Favourites";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Index", "UserFavourites", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Filter Favourites</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Search, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Search , new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.OrderBy, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(m => m.OrderBy)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-info" value="Filter" />
+        </div>
+    </div>
+}
+
+<table class="table-hover table-bordered">
+    <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Address</th>
+        <th class="text-center">Category</th>
+        <th class="text-center">Phone Number</th>
+        <th class="text-center">E-mail</th>
+        <th class="text-center">Favourites</th>
+    </tr>
+    @foreach(var restaurant in Model.Restaurants)
+    {
+        <tr>
+            <td><a href="@restaurant.Url">@restaurant.Name</a></td>
+            <td>@restaurant.Address</td>
+            <td>@restaurant.Category</td>
+            <td>@restaurant.PhoneNumber</td>
+            <td>@restaurant.Email</td>
+            <td>@restaurant.FavouritesCount</td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

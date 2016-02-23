@@ -25,6 +25,7 @@
                     @if (this.User.IsInRole("Regular"))
                     {
                         <li>@Html.ActionLink("Filter Restaurants", "Index", "RestaurantFilter", new { area = "Regular" }, null)</li>
+                        <li>@Html.ActionLink("Favourites", "Index", "UserFavourites", new { area = "Regular" }, null)</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

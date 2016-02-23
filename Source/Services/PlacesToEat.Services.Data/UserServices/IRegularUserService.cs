@@ -10,5 +10,7 @@
         void Favourite(string userId, string restaurantId);
 
         void Unfavourite(string userId, string restaurantId);
+
+        IQueryable<RestaurantUser> GetFavourites(string id, string search, int order);
     }
 }

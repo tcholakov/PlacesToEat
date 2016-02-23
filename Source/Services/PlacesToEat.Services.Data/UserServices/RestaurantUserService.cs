@@ -25,7 +25,7 @@
             {
                 result = this.restaurants
                 .All()
-                .Where(x => x.Name.Contains(search) || x.Address.Contains(search))
+                .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
                 .ToList()
                 .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
                 .AsQueryable<RestaurantUser>();
@@ -34,7 +34,7 @@
             {
                 result = this.restaurants
                 .All()
-                .Where(x => x.Name.Contains(search) || x.Address.Contains(search))
+                .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
                 .Where(x => x.CategoryId == categoryId)
                 .ToList()
                 .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)

@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Web.Areas.Regular.ViewModels
+﻿namespace PlacesToEat.Web.Areas.Regular.ViewModels.RestaurantFilter
 {
     using System.Collections.Generic;
     using Web.ViewModels.Restaurant;

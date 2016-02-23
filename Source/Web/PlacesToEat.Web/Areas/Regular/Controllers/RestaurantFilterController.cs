@@ -8,7 +8,7 @@
     using PlacesToEat.Web.Controllers;
     using Services.Data;
     using Services.Data.UserServices;
-    using ViewModels;
+    using ViewModels.RestaurantFilter;
     using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;
 
@@ -47,7 +47,8 @@
             {
                 distance = 7.95;
                 zoom = 13;
-            }else if (distance > 2 && distance <= 5)
+            }
+            else if (distance > 2 && distance <= 5)
             {
                 zoom = 14;
             }
