@@ -3,41 +3,74 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Infrastructure.ListGenerators;
     using Infrastructure.Mapping;
     using PlacesToEat.Web.Controllers;
+    using Services.Data;
     using Services.Data.UserServices;
     using ViewModels;
+    using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;
 
     [Authorize(Roles = "Regular")]
     public class RestaurantFilterController : BaseController
     {
-        private readonly IRestaurantUserService restaurants;
+        private const int CategoriesCacheTime = 60 * 60;
 
-        public RestaurantFilterController(IRestaurantUserService restaurants)
+        private readonly IRestaurantUserService restaurants;
+        private readonly ICategoryService categories;
+
+        public RestaurantFilterController(IRestaurantUserService restaurants, ICategoryService categories)
         {
             this.restaurants = restaurants;
+            this.categories = categories;
         }
 
         public ActionResult Index()
         {
+            var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), CategoriesCacheTime);
+
             var model = new RestaurantFilterViewModel();
+
+            model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
+
+            model.Distance = 1;
 
             return this.View(model);
         }
 
-        public ActionResult FilteredRestaurants(double? latitude, double? longitude, string search, int? categoryId, double? distance)
+        public ActionResult FilteredRestaurants(double? latitude, double? longitude, string search, int? categoryId, double distance = 1)
         {
-            IEnumerable<RestaurantMapViewModel> restaurants = null;
+            var zoom = 15;
+
+            if (distance >= 8)
+            {
+                distance = 7.95;
+                zoom = 13;
+            }else if (distance > 2 && distance <= 5)
+            {
+                zoom = 14;
+            }
 
             if (latitude != null && longitude != null)
             {
-                restaurants = this.restaurants.GetClosest((double)latitude, (double)longitude, 1).To<RestaurantMapViewModel>().ToList();
+                var restaurants = this.restaurants.FilterRestaurants((double)latitude, (double)longitude, distance, search, categoryId).To<RestaurantMapViewModel>().ToList();
 
-                return this.PartialView("~/Views/GoogleMaps/_GoogleMapsListRestaurantsPartial.cshtml", restaurants);
+                if (restaurants == null)
+                {
+                    return this.Redirect("/");
+                }
+
+                var model = new RestaurantMapFilterViewModel
+                {
+                    Zoom = zoom,
+                    Restaurants = restaurants
+                };
+
+                return this.PartialView("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterListRestaurantsPartial.cshtml", model);
             }
 
-            return this.RedirectToAction("Index");
+            return this.Redirect("/");
         }
     }
 }

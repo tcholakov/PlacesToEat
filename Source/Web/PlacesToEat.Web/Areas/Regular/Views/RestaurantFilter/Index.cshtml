@@ -5,15 +5,45 @@
 }
 
 <h2>@ViewBag.Title</h2>
-@Html.Hidden("category-id", Model.CategoryId)
-@Html.Hidden("search", Model.Search)
-@Html.Hidden("distance", Model.Distance)
 
+@Html.Hidden("lat-id")
+@Html.Hidden("lng-id")
+<div class="row">
+    <div class="row">
+        @Html.LabelFor(x => x.CategoryId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.DropDownListFor(m => m.CategoryId, Model.Categories, new { @class = "form-control", id = "category-id" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        @Html.LabelFor(x => x.Search, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.EditorFor(x => x.Search, new { htmlAttributes = new { @class = "form-control", placeholder = "Search", id = "search" } })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        @Html.LabelFor(x => x.Distance, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.EditorFor(x => x.Distance, new { htmlAttributes = new { @class = "form-control", placeholder = "Distance", id = "distance" } })
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <a href="#" onclick="searchSendFilter()" class="btn btn-info">Filter</a>
+    </div>
+</div>
+<br />
 <div id="mapContainer">
     @Html.Partial("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterPartial.cshtml")
 </div>
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
     @(Html.GoogleMap().ScriptRegistrar(scripts =>
     {
         scripts.Add("jmelosegui.googlemap.js");

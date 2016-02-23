@@ -32,6 +32,18 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (this.TempData["SuccessNotification"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>Info!</strong> @this.TempData["SuccessNotification"]
+            </div>
+        }
+        else if (this.TempData["ErrorNotification"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Info!</strong> @this.TempData["ErrorNotification"]
+            </div>
+        }
         @RenderBody()
         <hr />
         <footer>

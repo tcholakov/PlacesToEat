@@ -1,18 +1,47 @@
 ﻿namespace PlacesToEat.Services.Data.UserServices
 {
-    using System;
     using System.Linq;
     using PlacesToEat.Data.Common;
+    using PlacesToEat.Data.Models;
     using PlacesToEat.Data.Models.Users;
     using PlacesToEat.Web.Infrastructure.GeoLocation;
 
     public class RestaurantUserService : IRestaurantUserService
     {
         private readonly IDbUserRepository<RestaurantUser> restaurants;
+        private readonly IDbRepository<Category> categories;
 
-        public RestaurantUserService(IDbUserRepository<RestaurantUser> restaurants)
+        public RestaurantUserService(IDbUserRepository<RestaurantUser> restaurants, IDbRepository<Category> categories)
         {
             this.restaurants = restaurants;
+            this.categories = categories;
+        }
+
+        public IQueryable<RestaurantUser> FilterRestaurants(double currentLatitude, double currentLongitude, double distanceInKilometeres, string search, int? categoryId)
+        {
+            IQueryable<RestaurantUser> result = null;
+
+            if (categoryId == null || categoryId == this.categories.All().Where(x => x.Name == "All").Select(x => x.Id).FirstOrDefault())
+            {
+                result = this.restaurants
+                .All()
+                .Where(x => x.Name.Contains(search) || x.Address.Contains(search))
+                .ToList()
+                .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                .AsQueryable<RestaurantUser>();
+            }
+            else
+            {
+                result = this.restaurants
+                .All()
+                .Where(x => x.Name.Contains(search) || x.Address.Contains(search))
+                .Where(x => x.CategoryId == categoryId)
+                .ToList()
+                .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                .AsQueryable<RestaurantUser>();
+            }
+
+            return result;
         }
 
         public IQueryable<RestaurantUser> GetAll()

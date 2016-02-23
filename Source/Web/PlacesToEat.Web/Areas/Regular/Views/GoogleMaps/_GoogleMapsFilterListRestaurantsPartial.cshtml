@@ -1,0 +1,38 @@
+﻿@model PlacesToEat.Web.Areas.Regular.ViewModels.RestaurantMapFilterViewModel
+@using Jmelosegui.Mvc.GoogleMap
+@{
+    Html.GoogleMap()
+        .Name("nearestRestaurants")
+        .Height(600)
+        .Zoom(Model.Zoom)
+        .Center(c => c.UseCurrentPosition())
+        .BindTo<PlacesToEat.Web.ViewModels.Restaurant.RestaurantMapViewModel, Marker>(Model.Restaurants, mappings => mappings.For<PlacesToEat.Web.ViewModels.Restaurant.RestaurantMapViewModel>(
+             (binding => binding.ItemDataBound((marker, restaurant) =>
+             {
+                 marker.Latitude = restaurant.Latitude;
+                 marker.Longitude = restaurant.Longitude;
+                 marker.Title = restaurant.Name;
+                 marker.Window = new InfoWindow(marker)
+                 {
+                     Template =
+                    {
+                        Html = @"<text>
+                                    <div>
+                                        <h4><a href='"+restaurant.Url+"'>"+restaurant.Name+"</a></h4>"
+                                        +"<p><span class='text-strong'>Category: </span>"+restaurant.Category+"</p>"
+                                        +"<p><span class='text-strong'>Address: </span>"+restaurant.Address+"</p>"
+                                        +"<p><span class='text-strong'>E-mail: </span>"+restaurant.Email+"</p>"
+                                        +"<p><span class='text-strong'>Phone number: </span>"+restaurant.PhoneNumber+"</p>"
+                                        +"<p><span class='text-strong'>Favourited by: </span>"+restaurant.Favourites.Count+" users</p>"
+                                 +"</div>"
+                              +"</text>"
+                    }
+                 };
+             }))))
+            .ClientEvents(events => events
+                .OnMapLoaded("mapCurrentLocationLoaded")
+            )
+            .Render();
+
+}
+@(Html.GoogleMap().ScriptRegistrar())

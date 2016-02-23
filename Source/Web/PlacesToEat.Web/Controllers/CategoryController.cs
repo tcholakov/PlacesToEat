@@ -1,8 +1,8 @@
 ﻿namespace PlacesToEat.Web.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Infrastructure.ListGenerators;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data;
@@ -44,7 +44,7 @@
             }
 
             model.CategoryId = (int)currentCategoryId;
-            model.Categories = this.GetCategorySelectListItems(categories);
+            model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
 
             return this.View(model);
         }
@@ -63,30 +63,9 @@
 
             var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), CategoriesCacheTime);
 
-            model.Categories = this.GetCategorySelectListItems(categories);
+            model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
 
             return this.View(model);
-        }
-
-        private IEnumerable<SelectListItem> GetCategorySelectListItems(IEnumerable<CategoryViewModel> categories)
-        {
-            // Create an empty list to hold result of the operation
-            var selectList = new List<SelectListItem>();
-
-            // For each string in the 'elements' variable, create a new SelectListItem object
-            // that has both its Value and Text properties set to a particular value.
-            // This will result in MVC rendering each item as:
-            //     <option value="State Name">State Name</option>
-            foreach (var category in categories)
-            {
-                selectList.Add(new SelectListItem
-                {
-                    Value = category.Id.ToString(),
-                    Text = category.Name
-                });
-            }
-
-            return selectList;
         }
     }
 }

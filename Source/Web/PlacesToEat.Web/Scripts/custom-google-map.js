@@ -65,6 +65,21 @@ function mapSendFilter(args) {
     })
 }
 
+function searchSendFilter() {
+    var lat = $('#lat-id').val();
+    var lng = $('#lng-id').val();
+
+    var categoryId = $('#category-id').val();
+    var distance = $('#distance').val();
+    var search = $('#search').val();
+
+    map.ajax({
+        url: '/Regular/RestaurantFilter/FilteredRestaurants',
+        type: 'Get',
+        data: { latitude: lat, longitude: lng, categoryId: categoryId, distance: distance, search: search }
+    })
+}
+
 function mapAddressLoaded(args) {
     placeMarker(args.map.center, args.map, addressName);
 

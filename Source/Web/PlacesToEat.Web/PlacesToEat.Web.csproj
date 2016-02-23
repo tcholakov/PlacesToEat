@@ -204,6 +204,7 @@
     <Compile Include="Areas\Regular\Controllers\RestaurantFilterController.cs" />
     <Compile Include="Areas\Regular\RegularAreaRegistration.cs" />
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilterViewModel.cs" />
+    <Compile Include="Areas\Regular\ViewModels\RestaurantMapFilterViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ListGenerators\DropDownListGenerator.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -269,6 +271,7 @@
     <Content Include="Areas\Regular\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Regular\Views\RestaurantFilter\Index.cshtml" />
     <Content Include="Areas\Regular\Views\GoogleMaps\_GoogleMapsFilterPartial.cshtml" />
+    <Content Include="Areas\Regular\Views\GoogleMaps\_GoogleMapsFilterListRestaurantsPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\custom-google-map.js" />
     <Content Include="Scripts\jmelosegui.googlemap.js" />
