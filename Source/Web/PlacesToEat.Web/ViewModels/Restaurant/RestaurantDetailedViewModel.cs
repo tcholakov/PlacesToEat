@@ -6,5 +6,7 @@
     public class RestaurantDetailedViewModel : RestaurantBaseViewModel
     {
         public ICollection<CommentViewModel> Comments { get; set; }
+
+        public CommentInputModel CommentInputModel { get; set; }
     }
 }

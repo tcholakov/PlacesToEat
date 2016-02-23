@@ -6,5 +6,7 @@
     public interface IRegularUserService
     {
         IQueryable<RegularUser> GetAll();
+
+        void Favourite(string userId, string restaurantId);
     }
 }
