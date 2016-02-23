@@ -22,7 +22,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Restaurants in your area", "Index", "Home")</li>
+                    @if (this.User.IsInRole("Regular"))
+                    {
+                        <li>@Html.ActionLink("Filter Restaurants", "Index", "RestaurantFilter", new { area = "Regular" }, null)</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

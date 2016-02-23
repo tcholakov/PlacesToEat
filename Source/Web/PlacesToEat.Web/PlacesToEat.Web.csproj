@@ -201,6 +201,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Regular\Controllers\RestaurantFilterController.cs" />
+    <Compile Include="Areas\Regular\RegularAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -261,6 +263,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Regular\Views\web.config" />
+    <Content Include="Areas\Regular\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Regular\Views\RestaurantFilter\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\custom-google-map.js" />
     <Content Include="Scripts\jmelosegui.googlemap.js" />
@@ -317,6 +322,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Regular\ViewModels\" />
+    <Folder Include="Areas\Regular\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
