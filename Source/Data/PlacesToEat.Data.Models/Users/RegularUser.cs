@@ -6,10 +6,12 @@
     public class RegularUser : User
     {
         private ICollection<RestaurantUser> favouriteRestaurants;
+        private ICollection<Event> events;
 
         public RegularUser()
         {
             this.favouriteRestaurants = new HashSet<RestaurantUser>();
+            this.events = new HashSet<Event>();
         }
 
         [MinLength(1)]
@@ -24,6 +26,12 @@
         {
             get { return this.favouriteRestaurants; }
             set { this.favouriteRestaurants = value; }
+        }
+
+        public virtual ICollection<Event> Events
+        {
+            get { return this.events; }
+            set { this.events = value; }
         }
     }
 }

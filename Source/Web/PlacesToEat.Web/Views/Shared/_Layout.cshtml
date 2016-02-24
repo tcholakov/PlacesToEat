@@ -31,6 +31,10 @@
                     {
                         <li>@Html.ActionLink("Categories List", "ListCategories", "ListCategories", new { area = "Administration" }, null)</li>
                     }
+                    else if (this.User.IsInRole("Restaurant"))
+                    {
+                        <li>@Html.ActionLink("Create weekly event", "Create", "Event", new { area = "Restaurants" }, null)</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -23,6 +23,8 @@
 
         public IDbSet<Comment> Comments { get; set; }
 
+        public IDbSet<Event> Events { get; set; }
+
         public static PlacesToEatDbContext Create()
         {
             return new PlacesToEatDbContext();

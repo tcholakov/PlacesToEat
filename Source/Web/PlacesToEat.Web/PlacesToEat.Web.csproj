@@ -217,6 +217,9 @@
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\OrderByType.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\RegularUserFavouriteViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\UserFavouritesViewModel.cs" />
+    <Compile Include="Areas\Restaurants\Controllers\EventController.cs" />
+    <Compile Include="Areas\Restaurants\RestaurantsAreaRegistration.cs" />
+    <Compile Include="Areas\Restaurants\ViewModels\Event\EventInputModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -290,6 +293,13 @@
     <Content Include="Areas\Administration\Views\AdministerCategories\Add.cshtml" />
     <Content Include="Areas\Administration\Views\ListCategories\ListCategories.cshtml" />
     <Content Include="Areas\Administration\Views\AdministerCategories\Update.cshtml" />
+    <Content Include="Areas\Restaurants\Views\web.config" />
+    <Content Include="Areas\Restaurants\Views\Event\Create.cshtml" />
+    <Content Include="Areas\Restaurants\Views\_ViewStart.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\custom-google-map.js" />
     <Content Include="Scripts\jmelosegui.googlemap.js" />
@@ -301,6 +311,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\markerclusterer.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -348,6 +359,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Regular\Views\Shared\" />
+    <Folder Include="Areas\Restaurants\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
