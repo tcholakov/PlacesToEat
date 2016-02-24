@@ -27,6 +27,29 @@
                 roleManager.Create(new IdentityRole { Name = "Administrator" });
             }
 
+            userManager.PasswordValidator = new PasswordValidator
+            {
+                RequiredLength = 5,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
+            };
+
+            var initialUser = userManager.Users.FirstOrDefault(x => x.UserName == "admin");
+
+            if (initialUser == null)
+            {
+                var user = new User
+                {
+                    UserName = "admin"
+                };
+
+                var result = userManager.Create(user, "admin");
+
+                userManager.AddToRole(user.Id, "Administrator");
+            }
+
             if (!context.Categories.Any())
             {
                 var category = new Category

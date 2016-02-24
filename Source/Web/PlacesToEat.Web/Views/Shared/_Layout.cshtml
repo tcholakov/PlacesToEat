@@ -27,6 +27,10 @@
                         <li>@Html.ActionLink("Filter Restaurants", "Index", "RestaurantFilter", new { area = "Regular" }, null)</li>
                         <li>@Html.ActionLink("Favourites", "Index", "UserFavourites", new { area = "Regular" }, null)</li>
                     }
+                    else if (this.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Categories List", "ListCategories", "ListCategories", new { area = "Administration" }, null)</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

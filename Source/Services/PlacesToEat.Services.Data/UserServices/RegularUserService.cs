@@ -53,25 +53,29 @@
                     .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
                     .OrderBy(x => x.Name)
                     .AsQueryable<RestaurantUser>();
-            }else if (order == 2)
+            }
+            else if (order == 2)
             {
                 result = user.FavouriteRestaurants
                     .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
                     .OrderBy(x => x.Address)
                     .AsQueryable<RestaurantUser>();
-            }else if (order == 3)
+            }
+            else if (order == 3)
             {
                 result = user.FavouriteRestaurants
                     .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
                     .OrderBy(x => x.Category.Name)
                     .AsQueryable<RestaurantUser>();
-            }else if (order == 4)
+            }
+            else if (order == 4)
             {
                 result = user.FavouriteRestaurants
                     .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
                     .OrderBy(x => x.Email)
                     .AsQueryable<RestaurantUser>();
-            }else if (order == 5)
+            }
+            else if (order == 5)
             {
                 result = user.FavouriteRestaurants
                     .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))

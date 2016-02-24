@@ -1,9 +1,8 @@
-﻿namespace PlacesToEat.Data.Models
+﻿namespace PlacesToEat.Web.Areas.Administration.ViewModels.AdministerCategories
 {
     using System.ComponentModel.DataAnnotations;
-    using Common.Models;
 
-    public class Category : BaseModel<int>
+    public class CategoryInputModel
     {
         [Required]
         [MaxLength(50)]
