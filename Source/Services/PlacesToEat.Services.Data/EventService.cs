@@ -35,6 +35,7 @@
             return this.events
                 .All()
                 .Where(x => x.Participants.Any(u => u.Id == userId))
+                .Where(x => x.ExpirationDate > DateTime.UtcNow)
                 .Where(x => x.Name.Contains(search) || x.Description.Contains(search) || x.Restaurant.Name.Contains(search))
                 .OrderByDescending(x => x.ExpirationDate);
         }

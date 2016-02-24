@@ -26,7 +26,7 @@
                     {
                         <li>@Html.ActionLink("Filter Restaurants", "Index", "RestaurantFilter", new { area = "Regular" }, null)</li>
                         <li>@Html.ActionLink("Favourites", "Index", "UserFavourites", new { area = "Regular" }, null)</li>
-                        <li>@Html.ActionLink("List events", "ListEvents", "ListRegularUserEvents", new { area = "Regular" }, null)</li>
+                        <li>@Html.ActionLink("Active events", "ListEvents", "ListRegularUserEvents", new { area = "Regular" }, null)</li>
                     }
                     else if (this.User.IsInRole("Administrator"))
                     {
