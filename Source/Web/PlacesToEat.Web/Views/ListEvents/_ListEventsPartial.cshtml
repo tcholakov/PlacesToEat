@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PlacesToEat.Web.ViewModels.Event.EventViewModel>
+
+@foreach (var ev in Model)
+{
+    <div class="container">
+        <div class="row">
+            <h3>@ev.Name</h3>
+            <p><span class="text-info">Restaurant: </span>@ev.Restaurant</p>
+            <p><span class="text-info">Description: </span>@ev.Description</p>
+            <p><span class="text-info">Expires on: </span>@ev.ExpirationDate</p>
+        </div>
+    </div>
+}
+
