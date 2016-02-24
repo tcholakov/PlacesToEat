@@ -26,6 +26,7 @@
                     {
                         <li>@Html.ActionLink("Filter Restaurants", "Index", "RestaurantFilter", new { area = "Regular" }, null)</li>
                         <li>@Html.ActionLink("Favourites", "Index", "UserFavourites", new { area = "Regular" }, null)</li>
+                        <li>@Html.ActionLink("List events", "ListEvents", "ListRegularUserEvents", new { area = "Regular" }, null)</li>
                     }
                     else if (this.User.IsInRole("Administrator"))
                     {
@@ -34,6 +35,7 @@
                     else if (this.User.IsInRole("Restaurant"))
                     {
                         <li>@Html.ActionLink("Create weekly event", "Create", "Event", new { area = "Restaurants" }, null)</li>
+                        <li>@Html.ActionLink("List events", "ListEvents", "ListEvents", new { area = "Restaurants" }, null)</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

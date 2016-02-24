@@ -101,6 +101,13 @@
 
                 context.Categories.Add(category);
 
+                category = new Category
+                {
+                    Name = "Pizza"
+                };
+
+                context.Categories.Add(category);
+
                 context.SaveChanges();
             }
         }

@@ -55,7 +55,7 @@
 
             this.events.Create(dbevent);
 
-            return this.View();
+            return this.RedirectToAction("ListEvents", "ListEvents");
         }
     }
 }

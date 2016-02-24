@@ -209,17 +209,21 @@
     <Compile Include="Areas\Administration\ViewModels\ListCategories\CategoryAdvancedViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdministerCategories\CategoryInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\ListCategories\Order.cs" />
+    <Compile Include="Areas\Regular\Controllers\ListRegularUserEventsController.cs" />
     <Compile Include="Areas\Regular\Controllers\RestaurantFilterController.cs" />
     <Compile Include="Areas\Regular\Controllers\UserFavouritesController.cs" />
     <Compile Include="Areas\Regular\RegularAreaRegistration.cs" />
+    <Compile Include="Areas\Regular\ViewModels\ListRegularUserEvents\ListRegularUserEventsViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantFilterViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantMapFilterViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\OrderByType.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\RegularUserFavouriteViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\UserFavouritesViewModel.cs" />
     <Compile Include="Areas\Restaurants\Controllers\EventController.cs" />
+    <Compile Include="Areas\Restaurants\Controllers\ListEventsController.cs" />
     <Compile Include="Areas\Restaurants\RestaurantsAreaRegistration.cs" />
     <Compile Include="Areas\Restaurants\ViewModels\Event\EventInputModel.cs" />
+    <Compile Include="Areas\Restaurants\ViewModels\ListEvents\ListEventsViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -248,6 +252,7 @@
     <Compile Include="ViewModels\Category\ChangeCategoryViewModel.cs" />
     <Compile Include="ViewModels\Comment\CommentInputModel.cs" />
     <Compile Include="ViewModels\Comment\CommentViewModel.cs" />
+    <Compile Include="ViewModels\Event\EventViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
@@ -296,6 +301,8 @@
     <Content Include="Areas\Restaurants\Views\web.config" />
     <Content Include="Areas\Restaurants\Views\Event\Create.cshtml" />
     <Content Include="Areas\Restaurants\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Restaurants\Views\ListEvents\ListEvents.cshtml" />
+    <Content Include="Areas\Regular\Views\ListRegularUserEvents\ListEvents.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -354,6 +361,7 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Change.cshtml" />
     <Content Include="Views\Restaurant\Details.cshtml" />
+    <Content Include="Views\ListEvents\_ListEventsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
