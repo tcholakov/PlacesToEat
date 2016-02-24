@@ -12,7 +12,6 @@
         [Display(Name = "Category")]
         public int? CategoryId { get; set; }
 
-        [Range(0, 7.99)]
         [Display(Name = "Distance in km")]
         public double? Distance { get; set; }
 

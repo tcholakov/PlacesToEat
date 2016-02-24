@@ -25,7 +25,7 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<RestaurantUser, RestaurantMapViewModel>()
-                .ForMember(x => x.Category, opts => opts.MapFrom(x => x.Category.Name));
+                .ForMember(x => x.Category, opts => opts.MapFrom(x => x.Category == null ? "All" : x.Category.Name));
 
             configuration.CreateMap<RestaurantUser, RestaurantMapViewModel>()
                 .ForMember(x => x.Favourites, opts => opts.MapFrom(x => x.RegularUsers));

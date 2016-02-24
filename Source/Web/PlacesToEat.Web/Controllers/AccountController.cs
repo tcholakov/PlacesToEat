@@ -214,7 +214,11 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new RestaurantUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Name = model.Name, Address = model.Address, Latitude = model.Latitude, Longitude = model.Longitude };
+                var db = new PlacesToEatDbContext();
+
+                var categoryId = db.Categories.Where(x => x.Name == "All").Select(x => x.Id).FirstOrDefault();
+
+                var user = new RestaurantUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Name = model.Name, Address = model.Address, Latitude = model.Latitude, Longitude = model.Longitude, CategoryId = categoryId };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

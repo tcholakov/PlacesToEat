@@ -50,11 +50,12 @@
             }
 
             var restaurant = this.restaurants.GetById(id);
+
             var restaurantView = new RestaurantDetailedViewModel
             {
                 Id = restaurant.Id,
                 Address = restaurant.Address,
-                Category = restaurant.Category.Name,
+                Category = restaurant.Category == null ? "All" : restaurant.Category.Name,
                 Email = restaurant.Email,
                 Name = restaurant.Name,
                 PhoneNumber = restaurant.PhoneNumber,

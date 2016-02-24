@@ -1,6 +1,5 @@
 ﻿namespace PlacesToEat.Services.Data.UserServices
 {
-    using System;
     using System.Linq;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models.Users;

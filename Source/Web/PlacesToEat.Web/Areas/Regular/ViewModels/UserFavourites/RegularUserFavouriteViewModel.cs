@@ -31,7 +31,7 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<RestaurantUser, RegularUserFavouriteViewModel>()
-                .ForMember(x => x.Category, opts => opts.MapFrom(x => x.Category.Name));
+                .ForMember(x => x.Category, opts => opts.MapFrom(x => x.Category == null ? "All" : x.Category.Name));
 
             configuration.CreateMap<RestaurantUser, RegularUserFavouriteViewModel>()
                 .ForMember(x => x.FavouritesCount, opts => opts.MapFrom(x => x.RegularUsers.Count));
