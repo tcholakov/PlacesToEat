@@ -19,26 +19,24 @@
 
         public IQueryable<RestaurantUser> FilterRestaurants(double currentLatitude, double currentLongitude, double distanceInKilometeres, string search, int? categoryId)
         {
-            IQueryable<RestaurantUser> result = null;
+            IQueryable<RestaurantUser> result = this.restaurants
+                .All()
+                .Where(x => x.Name.Contains(search) || x.Address.Contains(search.ToLower()) || x.Email.Contains(search));
 
             if (categoryId == null || categoryId == this.categories.All().Where(x => x.Name == "All").Select(x => x.Id).FirstOrDefault())
             {
-                result = this.restaurants
-                .All()
-                .Where(x => x.Name.Contains(search) || x.Address.Contains(search.ToLower()) || x.Email.Contains(search))
-                .ToList()
-                .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
-                .AsQueryable<RestaurantUser>();
+                result = result
+                            .ToList()
+                            .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                            .AsQueryable<RestaurantUser>();
             }
             else
             {
-                result = this.restaurants
-                .All()
-                .Where(x => x.Name.Contains(search) || x.Address.Contains(search.ToLower()) || x.Email.Contains(search))
-                .Where(x => x.CategoryId == categoryId)
-                .ToList()
-                .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
-                .AsQueryable<RestaurantUser>();
+                result = result
+                            .Where(x => x.CategoryId == categoryId)
+                            .ToList()
+                            .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                            .AsQueryable<RestaurantUser>();
             }
 
             return result;
@@ -57,10 +55,10 @@
         public IQueryable<RestaurantUser> GetClosest(double currentLatitude, double currentLongitude, double distanceInKilometeres)
         {
             return this.restaurants
-                .All()
-                .ToList()
-                .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
-                .AsQueryable<RestaurantUser>();
+                            .All()
+                            .ToList()
+                            .Where(x => GeoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                            .AsQueryable<RestaurantUser>();
         }
 
         public int? GetCurrentCategoryId(string restaurantId)
