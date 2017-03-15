@@ -86,6 +86,10 @@
       <Project>{6813dc53-5eee-4507-8604-5301ee51a0d3}</Project>
       <Name>PlacesToEat.Web.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PlacesToEat.Services.Geo\PlacesToEat.Services.Geo\PlacesToEat.Services.Geo.csproj">
+      <Project>{979b0314-2f56-4325-ae95-0f557b29ed66}</Project>
+      <Name>PlacesToEat.Services.Geo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlacesToEat.Services.Web\PlacesToEat.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
       <Name>PlacesToEat.Services.Web</Name>

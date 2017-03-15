@@ -403,6 +403,10 @@
       <Project>{90fe4c4d-122a-406d-8a40-79c561fb8184}</Project>
       <Name>PlacesToEat.Services.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\PlacesToEat.Services.Geo\PlacesToEat.Services.Geo\PlacesToEat.Services.Geo.csproj">
+      <Project>{979b0314-2f56-4325-ae95-0f557b29ed66}</Project>
+      <Name>PlacesToEat.Services.Geo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\PlacesToEat.Services.Web\PlacesToEat.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
       <Name>PlacesToEat.Services.Web</Name>

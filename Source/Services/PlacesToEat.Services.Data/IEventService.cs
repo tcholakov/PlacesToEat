@@ -1,7 +1,8 @@
 ﻿namespace PlacesToEat.Services.Data
 {
-    using PlacesToEat.Data.Models;
     using System.Linq;
+
+    using PlacesToEat.Data.Models;
 
     public interface IEventService
     {

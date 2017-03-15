@@ -1,24 +1,23 @@
-﻿using System.Web.Mvc;
-
-namespace PlacesToEat.Web.Areas.Restaurants
+﻿namespace PlacesToEat.Web.Areas.Restaurants
 {
-    public class RestaurantsAreaRegistration : AreaRegistration 
+    using System.Web.Mvc;
+
+    public class RestaurantsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Restaurants";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Restaurants_default",
                 "Restaurants/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new { action = "Index", id = UrlParameter.Optional });
         }
     }
 }

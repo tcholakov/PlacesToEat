@@ -1,10 +1,10 @@
-﻿namespace PlacesToEat.Web.Infrastructure.GeoLocation
+﻿namespace PlacesToEat.Services.Geo
 {
     using System;
 
-    public static class GeoLocator
+    public class GeoLocatorService : IGeoLocatorService
     {
-        public static double DistanceTo(double startLatitude, double startLongitude, double endLatitude, double endLongitude, char unit = 'K')
+        public double DistanceTo(double startLatitude, double startLongitude, double endLatitude, double endLongitude, char unit = 'K')
         {
             double rlat1 = Math.PI * startLatitude / 180;
             double rlat2 = Math.PI * endLatitude / 180;

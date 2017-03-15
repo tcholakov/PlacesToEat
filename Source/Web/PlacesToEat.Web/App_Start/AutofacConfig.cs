@@ -3,12 +3,15 @@
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
+
     using Autofac;
     using Autofac.Integration.Mvc;
+
     using Controllers;
     using Data;
     using Data.Common;
     using Services.Data.UserServices;
+    using Services.Geo;
     using Services.Web;
 
     public static class AutofacConfig
@@ -52,6 +55,9 @@
             builder.Register(x => new IdentifierProvider())
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
+
+            var geoAssembly = Assembly.GetAssembly(typeof(IGeoLocatorService));
+            builder.RegisterAssemblyTypes(geoAssembly).AsImplementedInterfaces();
 
             var userServicesAssembly = Assembly.GetAssembly(typeof(IUserService));
             builder.RegisterAssemblyTypes(userServicesAssembly).AsImplementedInterfaces();
