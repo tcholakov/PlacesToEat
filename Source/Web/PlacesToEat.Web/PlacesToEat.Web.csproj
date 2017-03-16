@@ -208,7 +208,6 @@
     <Compile Include="Areas\Administration\ViewModels\ListCategories\AdministerCategoriesViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\ListCategories\CategoryAdvancedViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdministerCategories\CategoryInputModel.cs" />
-    <Compile Include="Areas\Administration\ViewModels\ListCategories\Order.cs" />
     <Compile Include="Areas\Regular\Controllers\ListRegularUserEventsController.cs" />
     <Compile Include="Areas\Regular\Controllers\RestaurantFilterController.cs" />
     <Compile Include="Areas\Regular\Controllers\UserFavouritesController.cs" />
