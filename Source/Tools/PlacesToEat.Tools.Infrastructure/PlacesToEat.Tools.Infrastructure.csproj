@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3DAFCB5-027B-4FB6-960C-5E189BA12534}</ProjectGuid>
+    <ProjectGuid>{F184B115-E02C-46E8-9A8B-153325A66A1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlacesToEat.Tools.Infrastructure</RootNamespace>

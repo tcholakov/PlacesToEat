@@ -82,8 +82,8 @@
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>PlacesToEat.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PlacesToEat.Tools.Infrastructure\PlacesToEat.Tools.Infrastructure.csproj">
-      <Project>{f3dafcb5-027b-4fb6-960c-5e189ba12534}</Project>
+    <ProjectReference Include="..\..\Tools\PlacesToEat.Tools.Infrastructure\PlacesToEat.Tools.Infrastructure.csproj">
+      <Project>{f184b115-e02c-46e8-9a8b-153325a66a1c}</Project>
       <Name>PlacesToEat.Tools.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\PlacesToEat.Services.Geo\PlacesToEat.Services.Geo\PlacesToEat.Services.Geo.csproj">
