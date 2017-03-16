@@ -1,9 +1,9 @@
 ﻿namespace PlacesToEat.Services.Data
 {
-    using System;
     using System.Linq;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models;
+    using PlacesToEat.Web.Infrastructure.CommonTypes;
 
     public class CategoryService : ICategoryService
     {
@@ -45,19 +45,18 @@
             return this.categories.All().Where(x => x.Id == id);
         }
 
-        public IQueryable<Category> GetFiltered(string search, int order)
+        public IQueryable<Category> GetFiltered(string search, CategoriesOrderBy order)
         {
             IQueryable<Category> result = this.categories
                                                 .All()
                                                 .Where(x => x.Name.Contains(search));
 
-            if (order == 1)
+            switch (order)
             {
-                result = result.OrderBy(x => x.Id);
-            }
-            else
-            {
-                result = result.OrderBy(x => x.Name);
+                case CategoriesOrderBy.Id: result = result.OrderBy(x => x.Id);
+                    break;
+                case CategoriesOrderBy.Name: result = result.OrderBy(x => x.Name);
+                    break;
             }
 
             return result;

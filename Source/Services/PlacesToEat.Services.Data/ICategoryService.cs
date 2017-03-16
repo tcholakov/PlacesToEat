@@ -1,13 +1,15 @@
 ﻿namespace PlacesToEat.Services.Data
 {
     using System.Linq;
+
     using PlacesToEat.Data.Models;
+    using PlacesToEat.Web.Infrastructure.CommonTypes;
 
     public interface ICategoryService
     {
         IQueryable<Category> GetAll();
 
-        IQueryable<Category> GetFiltered(string search, int order);
+        IQueryable<Category> GetFiltered(string search, CategoriesOrderBy order);
 
         void Create(string name);
 

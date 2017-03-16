@@ -2,6 +2,8 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
+    using Infrastructure.CommonTypes;
     using Infrastructure.Mapping;
     using Services.Data;
     using ViewModels.ListCategories;
@@ -20,12 +22,12 @@
         [HttpGet]
         public ActionResult ListCategories()
         {
-            var categoriesToDisplay = this.categories.GetFiltered(string.Empty, (int)OrderType.Id).To<CategoryAdvancedViewModel>().ToList();
+            var categoriesToDisplay = this.categories.GetFiltered(string.Empty, CategoriesOrderBy.Id).To<CategoryAdvancedViewModel>().ToList();
 
             var model = new AdministerCategoriesViewModel
             {
                 Search = string.Empty,
-                Order = OrderType.Id,
+                Order = CategoriesOrderBy.Id,
                 Categories = categoriesToDisplay
             };
 
@@ -43,7 +45,7 @@
                 search = string.Empty;
             }
 
-            var categoriesToDisplay = this.categories.GetFiltered(search, (int)model.Order).To<CategoryAdvancedViewModel>().ToList();
+            var categoriesToDisplay = this.categories.GetFiltered(search, model.Order).To<CategoryAdvancedViewModel>().ToList();
 
             model.Categories = categoriesToDisplay;
 

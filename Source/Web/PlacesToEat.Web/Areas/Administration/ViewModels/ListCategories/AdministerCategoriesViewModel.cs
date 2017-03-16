@@ -2,14 +2,15 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Web.ViewModels.Category;
+
+    using Infrastructure.CommonTypes;
 
     public class AdministerCategoriesViewModel
     {
         public string Search { get; set; }
 
         [Display(Name = "Order by")]
-        public OrderType Order { get; set; }
+        public CategoriesOrderBy Order { get; set; }
 
         public string AddUrl
         {
