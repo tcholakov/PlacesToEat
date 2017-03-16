@@ -23,21 +23,25 @@
 
         public IQueryable<Event> GetAllForRestaurant(string restaurantId, string search)
         {
-            return this.events
+            var events = this.events
                 .All()
                 .Where(x => x.RestaurantId == restaurantId)
                 .Where(x => x.Name.Contains(search) || x.Description.Contains(search))
                 .OrderByDescending(x => x.CreatedOn);
+
+            return events;
         }
 
         public IQueryable<Event> GetAllForUser(string userId, string search)
         {
-            return this.events
+            var events = this.events
                 .All()
-                .Where(x => x.Participants.Any(u => u.Id == userId))
+                .Where(x => x.Restaurant.RegularUsers.Any(u => u.Id == userId))
                 .Where(x => x.ExpirationDate > DateTime.UtcNow)
                 .Where(x => x.Name.Contains(search) || x.Description.Contains(search) || x.Restaurant.Name.Contains(search))
                 .OrderByDescending(x => x.ExpirationDate);
+
+            return events;
         }
     }
 }

@@ -39,8 +39,8 @@
             var restaurantId = this.User.Identity.GetUserId();
 
             DateTime baseDate = DateTime.UtcNow;
-            var thisWeekStart = baseDate.AddDays(-(int)baseDate.DayOfWeek);
-            var thisWeekEnd = thisWeekStart.AddDays(7).AddSeconds(-1);
+            DateTime thisWeekStart = baseDate.AddDays(-(int)baseDate.DayOfWeek);
+            DateTime thisWeekEnd = thisWeekStart.AddDays(7).AddSeconds(-1);
 
             var restaurant = this.restaurants.GetById(restaurantId);
 
@@ -49,8 +49,7 @@
                 Name = model.Name,
                 Description = model.Description,
                 RestaurantId = restaurantId,
-                ExpirationDate = thisWeekEnd,
-                Participants = restaurant.RegularUsers
+                ExpirationDate = thisWeekEnd
             };
 
             this.events.Create(dbevent);
