@@ -14,9 +14,17 @@
             this.events = events;
         }
 
-        public void Create(Event eventToCreate)
+        public void Create(string name, string describtion, string restaurantId, DateTime expirationDate)
         {
-            this.events.Add(eventToCreate);
+            var dbevent = new Event
+            {
+                Name = name,
+                Description = describtion,
+                RestaurantId = restaurantId,
+                ExpirationDate = expirationDate
+            };
+
+            this.events.Add(dbevent);
 
             this.events.Save();
         }

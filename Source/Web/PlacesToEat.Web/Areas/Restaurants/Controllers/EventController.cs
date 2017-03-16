@@ -42,17 +42,7 @@
             DateTime thisWeekStart = baseDate.AddDays(-(int)baseDate.DayOfWeek);
             DateTime thisWeekEnd = thisWeekStart.AddDays(7).AddSeconds(-1);
 
-            var restaurant = this.restaurants.GetById(restaurantId);
-
-            var dbevent = new Event
-            {
-                Name = model.Name,
-                Description = model.Description,
-                RestaurantId = restaurantId,
-                ExpirationDate = thisWeekEnd
-            };
-
-            this.events.Create(dbevent);
+            this.events.Create(model.Name, model.Description, restaurantId, thisWeekEnd);
 
             return this.RedirectToAction("ListEvents", "ListEvents");
         }
