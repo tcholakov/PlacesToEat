@@ -2,10 +2,10 @@
 {
     using System;
     using System.Web.Mvc;
-    using Data.Models;
+
     using Microsoft.AspNet.Identity;
-    using Services.Data;
-    using Services.Data.UserServices;
+    using Services.Data.Contracts;
+    using Services.Data.Contracts.UserServices;
     using ViewModels.Event;
     using Web.Controllers;
 

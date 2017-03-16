@@ -1,9 +1,11 @@
 ﻿namespace PlacesToEat.Web.Controllers
 {
     using System.Web.Mvc;
+
     using AutoMapper;
+
     using Infrastructure.Mapping;
-    using PlacesToEat.Services.Web;
+    using Services.Web.Contracts;
 
     public abstract class BaseController : Controller
     {

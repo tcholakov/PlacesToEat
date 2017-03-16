@@ -2,7 +2,8 @@
 {
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
-    using Services.Data.UserServices;
+
+    using Services.Data.Contracts.UserServices;
 
     public class RegularUserController : BaseController
     {

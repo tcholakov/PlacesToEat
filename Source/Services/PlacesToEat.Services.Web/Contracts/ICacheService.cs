@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Services.Web
+﻿namespace PlacesToEat.Services.Web.Contracts
 {
     using System;
 

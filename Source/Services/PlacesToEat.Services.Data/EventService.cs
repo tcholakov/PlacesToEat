@@ -2,6 +2,8 @@
 {
     using System;
     using System.Linq;
+
+    using Contracts;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models;
 

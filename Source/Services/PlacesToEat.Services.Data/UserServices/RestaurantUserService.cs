@@ -2,7 +2,8 @@
 {
     using System.Linq;
 
-    using Geo;
+    using Contracts.UserServices;
+    using Geo.Contracts;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models;
     using PlacesToEat.Data.Models.Users;

@@ -1,22 +1,17 @@
 ﻿namespace PlacesToEat.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+
     using Data;
-    using Data.Common;
-    using Data.Models;
     using Data.Models.Users;
-    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using PlacesToEat.Web.ViewModels.Account;
-    using Services.Data;
-    using ViewModels.Category;
+    using Services.Data.Contracts;
 
     [Authorize]
     public class AccountController : BaseController

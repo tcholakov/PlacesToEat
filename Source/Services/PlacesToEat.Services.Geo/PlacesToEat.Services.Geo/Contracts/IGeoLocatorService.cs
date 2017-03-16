@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Services.Geo
+﻿namespace PlacesToEat.Services.Geo.Contracts
 {
     public interface IGeoLocatorService
     {

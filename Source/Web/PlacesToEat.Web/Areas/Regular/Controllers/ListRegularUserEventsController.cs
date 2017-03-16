@@ -5,7 +5,7 @@
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using PlacesToEat.Web.Controllers;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.ListRegularUserEvents;
     using Web.ViewModels.Event;
 

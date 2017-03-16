@@ -6,7 +6,7 @@
     using Infrastructure.CommonTypes;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Services.Data.UserServices;
+    using Services.Data.Contracts.UserServices;
     using ViewModels.UserFavourites;
     using Web.Controllers;
 

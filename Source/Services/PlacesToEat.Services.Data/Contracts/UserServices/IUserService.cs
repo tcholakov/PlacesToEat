@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Services.Data.UserServices
+﻿namespace PlacesToEat.Services.Data.Contracts.UserServices
 {
     using System.Linq;
     using PlacesToEat.Data.Models.Users;

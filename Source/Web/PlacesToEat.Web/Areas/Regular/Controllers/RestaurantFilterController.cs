@@ -2,11 +2,12 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
     using Infrastructure.ListGenerators;
     using Infrastructure.Mapping;
     using PlacesToEat.Web.Controllers;
-    using Services.Data;
-    using Services.Data.UserServices;
+    using Services.Data.Contracts;
+    using Services.Data.Contracts.UserServices;
     using ViewModels.RestaurantFilter;
     using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;

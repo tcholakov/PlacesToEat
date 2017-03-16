@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Services.Data
+﻿namespace PlacesToEat.Services.Data.Contracts
 {
     public interface ICommentService
     {

@@ -10,9 +10,10 @@
     using Controllers;
     using Data;
     using Data.Common;
-    using Services.Data.UserServices;
-    using Services.Geo;
+    using Services.Data.Contracts.UserServices;
+    using Services.Geo.Contracts;
     using Services.Web;
+    using Services.Web.Contracts;
 
     public static class AutofacConfig
     {

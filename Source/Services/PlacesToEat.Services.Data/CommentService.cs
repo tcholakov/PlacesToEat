@@ -1,5 +1,6 @@
 ﻿namespace PlacesToEat.Services.Data
 {
+    using Contracts;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models;
 

@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Contracts;
+
     public class GeoLocatorService : IGeoLocatorService
     {
         public double DistanceTo(double startLatitude, double startLongitude, double endLatitude, double endLongitude, char unit = 'K')

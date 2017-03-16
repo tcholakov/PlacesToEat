@@ -2,9 +2,10 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.ListEvents;
     using Web.Controllers;
     using Web.ViewModels.Event;

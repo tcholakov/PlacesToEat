@@ -6,8 +6,8 @@
 
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Services.Data;
-    using Services.Data.UserServices;
+    using Services.Data.Contracts;
+    using Services.Data.Contracts.UserServices;
     using ViewModels.Comment;
     using ViewModels.RegularUser;
     using ViewModels.Restaurant;

@@ -2,11 +2,12 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
     using Infrastructure.ListGenerators;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Services.Data;
-    using Services.Data.UserServices;
+    using Services.Data.Contracts;
+    using Services.Data.Contracts.UserServices;
     using ViewModels.Category;
 
     public class CategoryController : BaseController

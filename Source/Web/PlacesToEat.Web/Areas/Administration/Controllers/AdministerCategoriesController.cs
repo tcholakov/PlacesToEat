@@ -2,9 +2,10 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
     using Infrastructure.Mapping;
     using PlacesToEat.Web.Controllers;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.AdministerCategories;
 
     [Authorize(Roles = "Administrator")]

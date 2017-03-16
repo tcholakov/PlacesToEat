@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoLocatorService.cs" />
-    <Compile Include="IGeoLocatorService.cs" />
+    <Compile Include="Contracts\IGeoLocatorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
