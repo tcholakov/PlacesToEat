@@ -1,7 +1,9 @@
 ﻿namespace PlacesToEat.Services.Data.UserServices
 {
     using System.Linq;
+
     using PlacesToEat.Data.Models.Users;
+    using PlacesToEat.Web.Infrastructure.CommonTypes;
 
     public interface IRegularUserService
     {
@@ -11,6 +13,6 @@
 
         void Unfavourite(string userId, string restaurantId);
 
-        IQueryable<RestaurantUser> GetFavourites(string id, string search, int order);
+        IQueryable<RestaurantUser> GetFavouriteRestaurants(string id, string search, RestaurantsOrderBy order);
     }
 }

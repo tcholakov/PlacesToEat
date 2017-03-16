@@ -1,8 +1,10 @@
 ﻿namespace PlacesToEat.Services.Data.UserServices
 {
     using System.Linq;
+
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models.Users;
+    using PlacesToEat.Web.Infrastructure.CommonTypes;
 
     public class RegularUserService : IRegularUserService
     {
@@ -40,7 +42,7 @@
             return this.users.All();
         }
 
-        public IQueryable<RestaurantUser> GetFavourites(string id, string search, int order)
+        public IQueryable<RestaurantUser> GetFavouriteRestaurants(string id, string search, RestaurantsOrderBy order)
         {
             var user = this.users.GetById(id);
 
@@ -49,15 +51,15 @@
 
             switch (order)
             {
-                case 1: result = result.OrderBy(x => x.Name);
+                case RestaurantsOrderBy.Name: result = result.OrderBy(x => x.Name);
                     break;
-                case 2: result = result.OrderBy(x => x.Address);
+                case RestaurantsOrderBy.Address: result = result.OrderBy(x => x.Address);
                     break;
-                case 3: result = result.OrderBy(x => x.Category.Name);
+                case RestaurantsOrderBy.Category: result = result.OrderBy(x => x.Category.Name);
                     break;
-                case 4: result = result.OrderBy(x => x.Email);
+                case RestaurantsOrderBy.Email: result = result.OrderBy(x => x.Email);
                     break;
-                case 5: result = result.OrderByDescending(x => x.RegularUsers.Count);
+                case RestaurantsOrderBy.Favourites: result = result.OrderByDescending(x => x.RegularUsers.Count);
                     break;
             }
 

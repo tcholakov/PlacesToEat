@@ -1,6 +1,6 @@
-﻿namespace PlacesToEat.Web.Areas.Regular.ViewModels.UserFavourites
+﻿namespace PlacesToEat.Web.Infrastructure.CommonTypes
 {
-    public enum OrderByType
+    public enum RestaurantsOrderBy
     {
         Name = 1,
         Address = 2,

@@ -216,7 +216,6 @@
     <Compile Include="Areas\Regular\ViewModels\ListRegularUserEvents\ListRegularUserEventsViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantFilterViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantMapFilterViewModel.cs" />
-    <Compile Include="Areas\Regular\ViewModels\UserFavourites\OrderByType.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\RegularUserFavouriteViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\UserFavouritesViewModel.cs" />
     <Compile Include="Areas\Restaurants\Controllers\EventController.cs" />

@@ -3,12 +3,14 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using Infrastructure.CommonTypes;
+
     public class UserFavouritesViewModel
     {
         public string Search { get; set; }
 
         [Display(Name = "Order By")]
-        public OrderByType OrderBy { get; set; }
+        public RestaurantsOrderBy OrderBy { get; set; }
 
         public IEnumerable<RegularUserFavouriteViewModel> Restaurants { get; set; }
     }

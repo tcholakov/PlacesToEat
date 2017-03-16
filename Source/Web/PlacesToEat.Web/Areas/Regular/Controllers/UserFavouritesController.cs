@@ -2,12 +2,13 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
+    using Infrastructure.CommonTypes;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.UserServices;
     using ViewModels.UserFavourites;
     using Web.Controllers;
-    using Web.ViewModels.Restaurant;
 
     [Authorize(Roles = "Regular")]
     public class UserFavouritesController : BaseController
@@ -24,11 +25,11 @@
         {
             var userId = this.User.Identity.GetUserId();
 
-            var restaurants = this.users.GetFavourites(userId, string.Empty, (int)OrderByType.Name).To<RegularUserFavouriteViewModel>().ToList();
+            var restaurants = this.users.GetFavouriteRestaurants(userId, string.Empty, RestaurantsOrderBy.Name).To<RegularUserFavouriteViewModel>().ToList();
 
             var model = new UserFavouritesViewModel
             {
-                OrderBy = OrderByType.Name,
+                OrderBy = RestaurantsOrderBy.Name,
                 Restaurants = restaurants
             };
 
@@ -46,7 +47,7 @@
                 model.Search = string.Empty;
             }
 
-            var restaurants = this.users.GetFavourites(userId, model.Search, (int)model.OrderBy).To<RegularUserFavouriteViewModel>().ToList();
+            var restaurants = this.users.GetFavouriteRestaurants(userId, model.Search, model.OrderBy).To<RegularUserFavouriteViewModel>().ToList();
 
             model.Restaurants = restaurants;
 
