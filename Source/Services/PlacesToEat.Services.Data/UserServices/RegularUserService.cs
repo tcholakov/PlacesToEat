@@ -5,7 +5,7 @@
     using Contracts.UserServices;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models.Users;
-    using PlacesToEat.Web.Infrastructure.CommonTypes;
+    using Tools.Infrastructure.CommonTypes;
 
     public class RegularUserService : IRegularUserService
     {

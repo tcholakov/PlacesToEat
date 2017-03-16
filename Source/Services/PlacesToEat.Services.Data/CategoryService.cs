@@ -5,7 +5,7 @@
     using Contracts;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models;
-    using PlacesToEat.Web.Infrastructure.CommonTypes;
+    using Tools.Infrastructure.CommonTypes;
 
     public class CategoryService : ICategoryService
     {

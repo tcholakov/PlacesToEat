@@ -3,9 +3,9 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using Infrastructure.CommonTypes;
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
+    using Tools.Infrastructure.CommonTypes;
     using ViewModels.ListCategories;
     using Web.Controllers;
 

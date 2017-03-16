@@ -3,7 +3,7 @@
     using System.Linq;
 
     using PlacesToEat.Data.Models.Users;
-    using PlacesToEat.Web.Infrastructure.CommonTypes;
+    using Tools.Infrastructure.CommonTypes;
 
     public interface IRegularUserService
     {

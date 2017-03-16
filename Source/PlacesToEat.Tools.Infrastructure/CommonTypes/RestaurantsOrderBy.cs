@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Web.Infrastructure.CommonTypes
+﻿namespace PlacesToEat.Tools.Infrastructure.CommonTypes
 {
     public enum RestaurantsOrderBy
     {

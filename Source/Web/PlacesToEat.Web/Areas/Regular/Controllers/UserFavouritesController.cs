@@ -3,10 +3,10 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using Infrastructure.CommonTypes;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts.UserServices;
+    using Tools.Infrastructure.CommonTypes;
     using ViewModels.UserFavourites;
     using Web.Controllers;
 
