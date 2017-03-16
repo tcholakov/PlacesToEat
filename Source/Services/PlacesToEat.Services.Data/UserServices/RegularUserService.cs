@@ -44,45 +44,24 @@
         {
             var user = this.users.GetById(id);
 
-            IQueryable<RestaurantUser> result = null;
+            var result = user.FavouriteRestaurants
+                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()));
 
-            if (order == 1)
+            switch (order)
             {
-                result = user.FavouriteRestaurants
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
-                    .OrderBy(x => x.Name)
-                    .AsQueryable<RestaurantUser>();
-            }
-            else if (order == 2)
-            {
-                result = user.FavouriteRestaurants
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
-                    .OrderBy(x => x.Address)
-                    .AsQueryable<RestaurantUser>();
-            }
-            else if (order == 3)
-            {
-                result = user.FavouriteRestaurants
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
-                    .OrderBy(x => x.Category.Name)
-                    .AsQueryable<RestaurantUser>();
-            }
-            else if (order == 4)
-            {
-                result = user.FavouriteRestaurants
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
-                    .OrderBy(x => x.Email)
-                    .AsQueryable<RestaurantUser>();
-            }
-            else if (order == 5)
-            {
-                result = user.FavouriteRestaurants
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Address.ToLower().Contains(search.ToLower()) || x.Email.ToLower().Contains(search.ToLower()))
-                    .OrderByDescending(x => x.RegularUsers.Count)
-                    .AsQueryable<RestaurantUser>();
+                case 1: result = result.OrderBy(x => x.Name);
+                    break;
+                case 2: result = result.OrderBy(x => x.Address);
+                    break;
+                case 3: result = result.OrderBy(x => x.Category.Name);
+                    break;
+                case 4: result = result.OrderBy(x => x.Email);
+                    break;
+                case 5: result = result.OrderByDescending(x => x.RegularUsers.Count);
+                    break;
             }
 
-            return result;
+            return result.AsQueryable<RestaurantUser>();
         }
     }
 }
