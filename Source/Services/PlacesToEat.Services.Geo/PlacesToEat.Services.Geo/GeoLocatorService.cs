@@ -6,30 +6,32 @@
 
     public class GeoLocatorService : IGeoLocatorService
     {
-        public double DistanceTo(double startLatitude, double startLongitude, double endLatitude, double endLongitude, char unit = 'K')
+        public double DistanceTo(double startLatitude, double startLongitude, double endLatitude, double endLongitude, DistanceUnit unit = DistanceUnit.Kilometers)
         {
             double rlat1 = Math.PI * startLatitude / 180;
             double rlat2 = Math.PI * endLatitude / 180;
             double theta = startLongitude - endLongitude;
             double rtheta = Math.PI * theta / 180;
-            double dist =
+
+            double distance =
                 (Math.Sin(rlat1) * Math.Sin(rlat2)) + (Math.Cos(rlat1) *
                 Math.Cos(rlat2) * Math.Cos(rtheta));
-            dist = Math.Acos(dist);
-            dist = dist * 180 / Math.PI;
-            dist = dist * 60 * 1.1515;
 
+            distance = Math.Acos(distance);
+            distance = distance * 180 / Math.PI;
+            double distanceInMiles = distance * 60 * 1.1515;
+            
             switch (unit)
             {
-                case 'K': // Kilometers -> default
-                    return dist * 1.609344;
-                case 'N': // Nautical Miles
-                    return dist * 0.8684;
-                case 'M': // Miles
-                    return dist;
+                case DistanceUnit.Kilometers:
+                    return distanceInMiles * 1.609344;
+                case DistanceUnit.NauticalMiles:
+                    return distanceInMiles * 0.8684;
+                case DistanceUnit.Miles:
+                    return distanceInMiles;
             }
 
-            return dist;
+            return distanceInMiles;
         }
     }
 }

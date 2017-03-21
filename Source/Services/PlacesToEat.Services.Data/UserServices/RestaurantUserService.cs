@@ -3,6 +3,7 @@
     using System.Linq;
 
     using Contracts.UserServices;
+    using Geo;
     using Geo.Contracts;
     using PlacesToEat.Data.Common;
     using PlacesToEat.Data.Models;
@@ -32,7 +33,7 @@
             {
                 result = result
                             .ToList()
-                            .Where(x => this.geoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                            .Where(x => this.geoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, DistanceUnit.Kilometers) <= distanceInKilometeres)
                             .AsQueryable<RestaurantUser>();
             }
             else
@@ -40,7 +41,7 @@
                 result = result
                             .Where(x => x.CategoryId == categoryId)
                             .ToList()
-                            .Where(x => this.geoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                            .Where(x => this.geoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, DistanceUnit.Kilometers) <= distanceInKilometeres)
                             .AsQueryable<RestaurantUser>();
             }
 
@@ -62,7 +63,7 @@
             return this.restaurants
                             .All()
                             .ToList()
-                            .Where(x => this.geoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, 'K') <= distanceInKilometeres)
+                            .Where(x => this.geoLocator.DistanceTo(currentLatitude, currentLongitude, x.Latitude, x.Longitude, DistanceUnit.Kilometers) <= distanceInKilometeres)
                             .AsQueryable<RestaurantUser>();
         }
 
