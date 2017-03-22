@@ -14,6 +14,8 @@
 
     public class RestaurantController : BaseController
     {
+        private const double ClosestRestaurantsDistance = 1;
+
         private readonly IRestaurantUserService restaurants;
         private readonly ICommentService comments;
 
@@ -29,7 +31,7 @@
 
             if (latitude != null && longitude != null)
             {
-                restaurants = this.restaurants.GetClosest((double)latitude, (double)longitude, 1).To<RestaurantMapViewModel>().ToList();
+                restaurants = this.restaurants.GetClosest((double)latitude, (double)longitude, RestaurantController.ClosestRestaurantsDistance).To<RestaurantMapViewModel>().ToList();
 
                 if (restaurants == null)
                 {

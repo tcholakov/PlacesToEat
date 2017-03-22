@@ -213,7 +213,8 @@
     <Compile Include="Areas\Regular\Controllers\UserFavouritesController.cs" />
     <Compile Include="Areas\Regular\RegularAreaRegistration.cs" />
     <Compile Include="Areas\Regular\ViewModels\ListRegularUserEvents\ListRegularUserEventsViewModel.cs" />
-    <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantFilterViewModel.cs" />
+    <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantFilterRequestViewModel.cs" />
+    <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantFilterResponseViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantMapFilterViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\RegularUserFavouriteViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\UserFavouritesViewModel.cs" />

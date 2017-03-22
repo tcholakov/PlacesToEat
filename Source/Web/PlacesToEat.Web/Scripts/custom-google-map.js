@@ -61,7 +61,7 @@ function mapSendFilter(args) {
     map.ajax({
         url: '/Regular/RestaurantFilter/FilteredRestaurants',
         type: 'Get',
-        data: { latitude: lat, longitude: lng, categoryId: categoryId, distance: distance, search: search }
+        data: { Latitude: lat, Longitude: lng, CategoryId: categoryId, Distance: distance, Search: search }
     })
 }
 
@@ -76,7 +76,7 @@ function searchSendFilter() {
     map.ajax({
         url: '/Regular/RestaurantFilter/FilteredRestaurants',
         type: 'Get',
-        data: { latitude: lat, longitude: lng, categoryId: categoryId, distance: distance, search: search }
+        data: { Latitude: lat, Longitude: lng, CategoryId: categoryId, Distance: distance, Search: search }
     })
 }
 

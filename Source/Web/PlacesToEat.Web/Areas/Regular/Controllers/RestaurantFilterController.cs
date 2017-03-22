@@ -11,6 +11,7 @@
     using ViewModels.RestaurantFilter;
     using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;
+    using Services.Geo.Contracts;
 
     [Authorize(Roles = "Regular")]
     public class RestaurantFilterController : BaseController
@@ -19,59 +20,60 @@
 
         private readonly IRestaurantUserService restaurants;
         private readonly ICategoryService categories;
+        private readonly IGoogleMapsService googleMapsService;
 
-        public RestaurantFilterController(IRestaurantUserService restaurants, ICategoryService categories)
+        public RestaurantFilterController(IRestaurantUserService restaurants, ICategoryService categories, IGoogleMapsService googleMapsService)
         {
             this.restaurants = restaurants;
             this.categories = categories;
+            this.googleMapsService = googleMapsService;
         }
 
         public ActionResult Index()
         {
             var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), CategoriesCacheTime);
 
-            var model = new RestaurantFilterViewModel();
-
-            model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
-
-            model.Distance = 1;
+            var model = new RestaurantFilterResponseViewModel
+            {
+                Distance = 1,
+                Categories = DropDownListGenerator.GetCategorySelectListItems(categories)
+            };
 
             return this.View(model);
         }
 
-        public ActionResult FilteredRestaurants(double? latitude, double? longitude, string search, int? categoryId, double distance = 1)
+        public ActionResult FilteredRestaurants(RestaurantFilterRequestViewModel model)
         {
-            var zoom = 15;
+            if (this.ModelState.IsValid)
+            {
+                if (model.Search == null)
+                {
+                    model.Search = string.Empty;
+                }
 
-            if (distance > 2 && distance <= 5)
-            {
-                zoom = 14;
-            }
-            else if (distance >= 5 && distance <= 8)
-            {
-                zoom = 13;
-            }
-            else if (distance >= 8)
-            {
-                zoom = 12;
-            }
+                if (model.Distance == null || model.Distance <= 0)
+                {
+                    model.Distance = 1;
+                }
 
-            if (latitude != null && longitude != null)
-            {
-                var restaurants = this.restaurants.FilterRestaurants((double)latitude, (double)longitude, distance, search, categoryId).To<RestaurantMapViewModel>().ToList();
+                var restaurants = this.restaurants.FilterRestaurants(model.Latitude, model.Longitude, (double)model.Distance, model.Search, model.CategoryId)
+                    .To<RestaurantMapViewModel>()
+                    .ToList();
 
                 if (restaurants == null)
                 {
                     return this.Redirect("/");
                 }
 
-                var model = new RestaurantMapFilterViewModel
+                int zoom = this.googleMapsService.GetBestGoogleMapsZoom((double)model.Distance);
+
+                var mapModel = new RestaurantMapFilterViewModel
                 {
                     Zoom = zoom,
                     Restaurants = restaurants
                 };
 
-                return this.PartialView("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterListRestaurantsPartial.cshtml", model);
+                return this.PartialView("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterListRestaurantsPartial.cshtml", mapModel);
             }
 
             return this.Redirect("/");

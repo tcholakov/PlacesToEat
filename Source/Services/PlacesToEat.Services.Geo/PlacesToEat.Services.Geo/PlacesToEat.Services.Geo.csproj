@@ -39,9 +39,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IGoogleMapsService.cs" />
     <Compile Include="DistanceUnit.cs" />
     <Compile Include="GeoLocatorService.cs" />
     <Compile Include="Contracts\IGeoLocatorService.cs" />
+    <Compile Include="GoogleMapsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
