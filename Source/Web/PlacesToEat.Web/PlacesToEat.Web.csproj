@@ -360,8 +360,8 @@
     <Content Include="Views\GoogleMaps\_GoogleMapsAddressPartial.cshtml" />
     <Content Include="Views\GoogleMaps\_GoogleMapsListRestaurantsPartial.cshtml" />
     <Content Include="Views\GoogleMaps\_GetCurrentLocationPartial.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Category\Change.cshtml" />
+    <Content Include="Areas\Restaurants\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Restaurants\Views\Category\Change.cshtml" />
     <Content Include="Views\Restaurant\Details.cshtml" />
     <Content Include="Views\ListEvents\_ListEventsPartial.cshtml" />
   </ItemGroup>

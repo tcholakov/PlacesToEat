@@ -9,7 +9,7 @@
             <li>
                 @if (this.User.IsInRole("Restaurant"))
                 {
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Category", new { area = "" }, htmlAttributes: new { title = "Change profile" })
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Category", new { area = "Restaurants" }, htmlAttributes: new { title = "Change profile" })
                 }
                 else
                 {
