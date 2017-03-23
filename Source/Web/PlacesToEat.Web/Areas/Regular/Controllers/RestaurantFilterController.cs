@@ -8,10 +8,10 @@
     using PlacesToEat.Web.Controllers;
     using Services.Data.Contracts;
     using Services.Data.Contracts.UserServices;
+    using Services.Geo.Contracts;
     using ViewModels.RestaurantFilter;
     using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;
-    using Services.Geo.Contracts;
 
     [Authorize(Roles = "Regular")]
     public class RestaurantFilterController : BaseController
@@ -42,6 +42,7 @@
             return this.View(model);
         }
 
+        [HttpGet]
         public ActionResult FilteredRestaurants(RestaurantFilterRequestViewModel model)
         {
             if (!this.ModelState.IsValid)

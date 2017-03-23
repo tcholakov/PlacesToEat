@@ -25,6 +25,7 @@
             this.comments = comments;
         }
 
+        [HttpGet]
         public ActionResult ClosestRestaurants(ClosestRetaurantsRequestModel model)
         {
             if (!this.ModelState.IsValid)

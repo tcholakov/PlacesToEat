@@ -4,6 +4,7 @@
 
     public class GoogleMapsController : BaseController
     {
+        [HttpGet]
         public ActionResult GoogleMapsAddressPartial(string address)
         {
             return this.PartialView("_GoogleMapsAddressPartial", (object)address);
