@@ -3,7 +3,7 @@
     using System.Linq;
 
     using Contracts.UserServices;
-    using PlacesToEat.Data.Common;
+    using PlacesToEat.Data.Common.Contracts;
     using PlacesToEat.Data.Models.Users;
 
     public class UserService : IUserService

@@ -4,7 +4,7 @@
     using System.Linq;
 
     using Contracts;
-    using PlacesToEat.Data.Common;
+    using PlacesToEat.Data.Common.Contracts;
     using PlacesToEat.Data.Models;
 
     public class EventService : IEventService

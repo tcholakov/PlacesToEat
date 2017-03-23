@@ -1,7 +1,7 @@
 ﻿namespace PlacesToEat.Services.Data
 {
     using Contracts;
-    using PlacesToEat.Data.Common;
+    using PlacesToEat.Data.Common.Contracts;
     using PlacesToEat.Data.Models;
 
     public class CommentService : ICommentService

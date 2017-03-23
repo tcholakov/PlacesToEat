@@ -10,6 +10,7 @@
     using Controllers;
     using Data;
     using Data.Common;
+    using Data.Common.Contracts;
     using Services.Data.Contracts.UserServices;
     using Services.Geo.Contracts;
     using Services.Web;
@@ -60,8 +61,6 @@
             var userServicesAssembly = Assembly.GetAssembly(typeof(IUserService));
             builder.RegisterAssemblyTypes(userServicesAssembly).AsImplementedInterfaces();
 
-            // var servicesAssembly = Assembly.GetAssembly(typeof(ICategoryService));
-            // builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();

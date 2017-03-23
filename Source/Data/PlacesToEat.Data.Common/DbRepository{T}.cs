@@ -4,9 +4,9 @@
     using System.Data.Entity;
     using System.Linq;
 
+    using Contracts;
     using PlacesToEat.Data.Common.Models;
 
-    // TODO: Why BaseModel<int> instead BaseModel<TKey>?
     public class DbRepository<T> : IDbRepository<T>
         where T : BaseModel<int>
     {

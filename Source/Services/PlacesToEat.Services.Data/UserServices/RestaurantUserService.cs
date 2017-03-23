@@ -5,7 +5,7 @@
     using Contracts.UserServices;
     using Geo;
     using Geo.Contracts;
-    using PlacesToEat.Data.Common;
+    using PlacesToEat.Data.Common.Contracts;
     using PlacesToEat.Data.Models;
     using PlacesToEat.Data.Models.Users;
 

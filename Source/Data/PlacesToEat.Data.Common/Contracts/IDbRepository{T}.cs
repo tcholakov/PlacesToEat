@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Data.Common
+﻿namespace PlacesToEat.Data.Common.Contracts
 {
     using System.Linq;
 

@@ -2,8 +2,9 @@
 {
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
     using System.Linq;
+
+    using Contracts;
     using Models;
 
     public class DbUserRepository<T> : IDbUserRepository<T>
