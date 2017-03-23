@@ -25,23 +25,21 @@
             this.comments = comments;
         }
 
-        public ActionResult ClosestRestaurants(double? latitude, double? longitude)
+        public ActionResult ClosestRestaurants(ClosestRetaurantsRequestModel model)
         {
-            IEnumerable<RestaurantMapViewModel> restaurants = null;
-
-            if (latitude != null && longitude != null)
+            if (!this.ModelState.IsValid)
             {
-                restaurants = this.restaurants.GetClosest((double)latitude, (double)longitude, RestaurantController.ClosestRestaurantsDistance).To<RestaurantMapViewModel>().ToList();
-
-                if (restaurants == null)
-                {
-                    return this.RedirectToAction("Index");
-                }
-
-                return this.PartialView("~/Views/GoogleMaps/_GoogleMapsListRestaurantsPartial.cshtml", restaurants);
+                return this.Redirect("/");
             }
 
-            return this.Redirect("/");
+            var restaurants = this.restaurants.GetClosest(model.Latitude, model.Longitude, RestaurantController.ClosestRestaurantsDistance).To<RestaurantMapViewModel>().ToList();
+
+            if (restaurants == null)
+            {
+                return this.RedirectToAction("Index");
+            }
+
+            return this.PartialView("~/Views/GoogleMaps/_GoogleMapsListRestaurantsPartial.cshtml", restaurants);
         }
 
         [HttpGet]

@@ -44,39 +44,39 @@
 
         public ActionResult FilteredRestaurants(RestaurantFilterRequestViewModel model)
         {
-            if (this.ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                if (model.Search == null)
-                {
-                    model.Search = string.Empty;
-                }
-
-                if (model.Distance == null || model.Distance <= 0)
-                {
-                    model.Distance = 1;
-                }
-
-                var restaurants = this.restaurants.FilterRestaurants(model.Latitude, model.Longitude, (double)model.Distance, model.Search, model.CategoryId)
-                    .To<RestaurantMapViewModel>()
-                    .ToList();
-
-                if (restaurants == null)
-                {
-                    return this.Redirect("/");
-                }
-
-                int zoom = this.googleMapsService.GetBestGoogleMapsZoom((double)model.Distance);
-
-                var mapModel = new RestaurantMapFilterViewModel
-                {
-                    Zoom = zoom,
-                    Restaurants = restaurants
-                };
-
-                return this.PartialView("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterListRestaurantsPartial.cshtml", mapModel);
+                return this.Redirect("/");
             }
 
-            return this.Redirect("/");
+            if (model.Search == null)
+            {
+                model.Search = string.Empty;
+            }
+
+            if (model.Distance == null || model.Distance <= 0)
+            {
+                model.Distance = 1;
+            }
+
+            var restaurants = this.restaurants.FilterRestaurants(model.Latitude, model.Longitude, (double)model.Distance, model.Search, model.CategoryId)
+                .To<RestaurantMapViewModel>()
+                .ToList();
+
+            if (restaurants == null)
+            {
+                return this.Redirect("/");
+            }
+
+            int zoom = this.googleMapsService.GetBestGoogleMapsZoom((double)model.Distance);
+
+            var mapModel = new RestaurantMapFilterViewModel
+            {
+                Zoom = zoom,
+                Restaurants = restaurants
+            };
+
+            return this.PartialView("~/Areas/Regular/Views/GoogleMaps/_GoogleMapsFilterListRestaurantsPartial.cshtml", mapModel);
         }
     }
 }

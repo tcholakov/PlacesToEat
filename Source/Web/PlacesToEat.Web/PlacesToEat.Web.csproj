@@ -263,6 +263,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\RegularUser\RegularUserViewModel.cs" />
+    <Compile Include="ViewModels\Restaurant\ClosestRetaurantsRequestModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantBaseViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantDetailedViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantMapViewModel.cs" />

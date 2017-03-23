@@ -33,7 +33,6 @@
         {
             var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), CategoriesCacheTime);
 
-            var model = new ChangeCategoryViewModel();
             var restaurantId = this.User.Identity.GetUserId();
             var currentCategoryId = this.restaurants.GetCurrentCategoryId(restaurantId);
 
@@ -44,8 +43,11 @@
                 this.restaurants.UpdateCategory((int)currentCategoryId, restaurantId);
             }
 
-            model.CategoryId = (int)currentCategoryId;
-            model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
+            var model = new ChangeCategoryViewModel()
+            {
+                CategoryId = (int)currentCategoryId,
+                Categories = DropDownListGenerator.GetCategorySelectListItems(categories)
+            };
 
             return this.View(model);
         }
