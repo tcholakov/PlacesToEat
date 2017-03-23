@@ -58,19 +58,19 @@
         [ValidateAntiForgeryToken]
         public ActionResult Change(ChangeCategoryViewModel model)
         {
-            if (this.ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                var restaurantId = this.User.Identity.GetUserId();
-                var categoryId = model.CategoryId;
+                var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), GlobalConstants.CategoriesCacheTimeInSeconds);
+                model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
 
-                this.restaurants.UpdateCategory(categoryId, restaurantId);
+                return this.View(model);
             }
 
-            var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), GlobalConstants.CategoriesCacheTimeInSeconds);
+            var restaurantId = this.User.Identity.GetUserId();
+            var categoryId = model.CategoryId;
 
-            model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
-
-            return this.View(model);
+            this.restaurants.UpdateCategory(categoryId, restaurantId);
+            return this.RedirectToAction("Details", "Restaurant", new { area = string.Empty, id = restaurantId });
         }
     }
 }
