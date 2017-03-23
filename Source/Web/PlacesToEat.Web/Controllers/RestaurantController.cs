@@ -34,11 +34,6 @@
 
             var restaurants = this.restaurants.GetClosest(model.Latitude, model.Longitude, RestaurantController.ClosestRestaurantsDistance).To<RestaurantMapViewModel>().ToList();
 
-            if (restaurants == null)
-            {
-                return this.RedirectToAction("Index");
-            }
-
             return this.PartialView("~/Views/GoogleMaps/_GoogleMapsListRestaurantsPartial.cshtml", restaurants);
         }
 
