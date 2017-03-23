@@ -1,4 +1,4 @@
-﻿namespace PlacesToEat.Web.ViewModels.Category
+﻿namespace PlacesToEat.Web.Areas.Restaurants.ViewModels.Category
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

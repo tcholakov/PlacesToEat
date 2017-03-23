@@ -12,12 +12,11 @@
     using ViewModels.RestaurantFilter;
     using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;
+    using Infrastructure;
 
     [Authorize(Roles = "Regular")]
     public class RestaurantFilterController : BaseController
     {
-        private const int CategoriesCacheTime = 60 * 60;
-
         private readonly IRestaurantUserService restaurants;
         private readonly ICategoryService categories;
         private readonly IGoogleMapsService googleMapsService;
@@ -31,7 +30,7 @@
 
         public ActionResult Index()
         {
-            var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), CategoriesCacheTime);
+            var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), GlobalConstants.CategoriesCacheTimeInSeconds);
 
             var model = new RestaurantFilterResponseViewModel
             {

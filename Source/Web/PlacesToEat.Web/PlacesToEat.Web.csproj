@@ -218,6 +218,7 @@
     <Compile Include="Areas\Regular\ViewModels\RestaurantFilter\RestaurantMapFilterViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\RegularUserFavouriteViewModel.cs" />
     <Compile Include="Areas\Regular\ViewModels\UserFavourites\UserFavouritesViewModel.cs" />
+    <Compile Include="Areas\Restaurants\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Restaurants\Controllers\EventController.cs" />
     <Compile Include="Areas\Restaurants\Controllers\ListEventsController.cs" />
     <Compile Include="Areas\Restaurants\RestaurantsAreaRegistration.cs" />
@@ -225,7 +226,6 @@
     <Compile Include="Areas\Restaurants\ViewModels\ListEvents\ListEventsViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\GoogleMapsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -248,7 +248,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\Category\ChangeCategoryViewModel.cs" />
+    <Compile Include="Areas\Restaurants\ViewModels\Category\ChangeCategoryViewModel.cs" />
     <Compile Include="ViewModels\Comment\CommentInputModel.cs" />
     <Compile Include="ViewModels\Comment\CommentViewModel.cs" />
     <Compile Include="ViewModels\Event\EventViewModel.cs" />
