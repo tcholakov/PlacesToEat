@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="CommonTypes\CategoriesOrderBy.cs" />
     <Compile Include="CommonTypes\RestaurantsOrderBy.cs" />
+    <Compile Include="Contracts\IUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

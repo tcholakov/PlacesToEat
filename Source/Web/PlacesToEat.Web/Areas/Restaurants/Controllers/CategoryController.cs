@@ -63,6 +63,8 @@
                 var categories = this.Cache.Get("categories", () => this.categories.GetAll().To<CategoryViewModel>().ToList(), GlobalConstants.CategoriesCacheTimeInSeconds);
                 model.Categories = DropDownListGenerator.GetCategorySelectListItems(categories);
 
+                this.TempData["SuccessNotification"] = "Restaurant category not changed";
+
                 return this.View(model);
             }
 
@@ -70,6 +72,9 @@
             var categoryId = model.CategoryId;
 
             this.restaurants.UpdateCategory(categoryId, restaurantId);
+
+            this.TempData["SuccessNotification"] = "Successfuly changed the restaurant category";
+
             return this.RedirectToAction("Details", "Restaurant", new { area = string.Empty, id = restaurantId });
         }
     }

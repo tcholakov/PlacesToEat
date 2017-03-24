@@ -6,6 +6,7 @@
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using Services.Data.Contracts.UserServices;
+    using Tools.Infrastructure.Contracts;
     using ViewModels.Event;
     using Web.Controllers;
 
@@ -14,11 +15,13 @@
     {
         private readonly IRestaurantUserService restaurants;
         private readonly IEventService events;
+        private readonly IUtilities utilities;
 
-        public EventController(IRestaurantUserService restaurants, IEventService events)
+        public EventController(IRestaurantUserService restaurants, IEventService events, IUtilities utilities)
         {
             this.restaurants = restaurants;
             this.events = events;
+            this.utilities = utilities;
         }
 
         [HttpGet]
@@ -38,11 +41,11 @@
 
             var restaurantId = this.User.Identity.GetUserId();
 
-            DateTime baseDate = DateTime.UtcNow;
-            DateTime thisWeekStart = baseDate.AddDays(-(int)baseDate.DayOfWeek);
-            DateTime thisWeekEnd = thisWeekStart.AddDays(7).AddSeconds(-1);
+            DateTime endOfTheWeek = this.utilities.GetEndOfTheWeek(DateTime.UtcNow);
 
-            this.events.Create(model.Name, model.Description, restaurantId, thisWeekEnd);
+            this.events.Create(model.Name, model.Description, restaurantId, endOfTheWeek);
+
+            this.TempData["SuccessNotification"] = $"Successfuly created weekly event {model.Name}";
 
             return this.RedirectToAction("ListEvents", "ListEvents");
         }

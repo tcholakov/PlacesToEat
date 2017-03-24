@@ -15,6 +15,7 @@
     using Services.Geo.Contracts;
     using Services.Web;
     using Services.Web.Contracts;
+    using Tools.Infrastructure.Contracts;
 
     public static class AutofacConfig
     {
@@ -60,6 +61,9 @@
 
             var userServicesAssembly = Assembly.GetAssembly(typeof(IUserService));
             builder.RegisterAssemblyTypes(userServicesAssembly).AsImplementedInterfaces();
+
+            var toolsInfrastructureAssembly = Assembly.GetAssembly(typeof(IUtilities));
+            builder.RegisterAssemblyTypes(toolsInfrastructureAssembly).AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))

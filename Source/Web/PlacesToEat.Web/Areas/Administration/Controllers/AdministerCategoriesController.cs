@@ -35,6 +35,8 @@
 
             this.categories.Create(model.Name);
 
+            this.TempData["SuccessNotification"] = $"Successfuly added new category {model.Name}";
+
             return this.RedirectToAction("ListCategories", "ListCategories");
         }
 
@@ -64,6 +66,8 @@
             }
 
             this.categories.Update(model.Id, model.Name);
+
+            this.TempData["SuccessNotification"] = $"Successfuly updated category {model.Name}";
 
             return this.RedirectToAction("ListCategories", "ListCategories");
         }
