@@ -57,7 +57,7 @@
                 Name = restaurant.Name,
                 PhoneNumber = restaurant.PhoneNumber,
                 Favourites = restaurant.RegularUsers.AsQueryable().To<RegularUserViewModel>().ToList(),
-                Comments = restaurant.Comments.AsQueryable().To<CommentViewModel>().ToList()
+                Comments = restaurant.Comments.AsQueryable().OrderByDescending(c => c.CreatedOn).To<CommentViewModel>().ToList()
             };
 
             return this.View(restaurantView);
