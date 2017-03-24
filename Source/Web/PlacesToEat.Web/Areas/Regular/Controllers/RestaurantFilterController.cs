@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using Infrastructure;
     using Infrastructure.ListGenerators;
     using Infrastructure.Mapping;
     using PlacesToEat.Web.Controllers;
@@ -12,7 +13,6 @@
     using ViewModels.RestaurantFilter;
     using Web.ViewModels.Category;
     using Web.ViewModels.Restaurant;
-    using Infrastructure;
 
     [Authorize(Roles = "Regular")]
     public class RestaurantFilterController : BaseController

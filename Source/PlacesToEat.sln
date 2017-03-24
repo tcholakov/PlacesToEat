@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacesToEat.Services.Geo", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacesToEat.Tools.Infrastructure", "Tools\PlacesToEat.Tools.Infrastructure\PlacesToEat.Tools.Infrastructure.csproj", "{F184B115-E02C-46E8-9A8B-153325A66A1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacesToEat.Web.Controller.Tests", "Tests\PlacesToEat.Web.Controller.Tests\PlacesToEat.Web.Controller.Tests.csproj", "{CF0B4849-7880-4034-AF63-A2ECB4922A9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{F184B115-E02C-46E8-9A8B-153325A66A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F184B115-E02C-46E8-9A8B-153325A66A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F184B115-E02C-46E8-9A8B-153325A66A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0B4849-7880-4034-AF63-A2ECB4922A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0B4849-7880-4034-AF63-A2ECB4922A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0B4849-7880-4034-AF63-A2ECB4922A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0B4849-7880-4034-AF63-A2ECB4922A9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +93,6 @@ Global
 		{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C} = {A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}
 		{979B0314-2F56-4325-AE95-0F557B29ED66} = {A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}
 		{F184B115-E02C-46E8-9A8B-153325A66A1C} = {33E0499A-81F4-4CE7-A1BF-6E7103399834}
+		{CF0B4849-7880-4034-AF63-A2ECB4922A9E} = {0C12FAF3-85BC-43E1-ABB2-6799213942CB}
 	EndGlobalSection
 EndGlobal
