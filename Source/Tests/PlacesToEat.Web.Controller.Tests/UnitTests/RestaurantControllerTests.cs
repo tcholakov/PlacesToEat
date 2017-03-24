@@ -10,7 +10,6 @@
 
     using Controllers;
     using Data.Models.Users;
-    using Services.Data.Contracts;
     using Services.Data.Contracts.UserServices;
     using ViewModels.Restaurant;
     using Infrastructure.Mapping;
@@ -34,12 +33,10 @@
             var mockedRestaurantUserService = new Mock<IRestaurantUserService>();
             mockedRestaurantUserService.Setup(x => x.GetById(restaurantId)).Returns(resultDbRestaurant);
 
-            var mockedCommentService = new Mock<ICommentService>();
-
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute(typeof(RestaurantController).Assembly);
 
-            var restaurantController = new RestaurantController(mockedRestaurantUserService.Object, mockedCommentService.Object);
+            var restaurantController = new RestaurantController(mockedRestaurantUserService.Object, null);
 
             //Act
             var actionResult = restaurantController.Details(restaurantId) as ViewResult;
@@ -74,12 +71,10 @@
             var mockedRestaurantUserService = new Mock<IRestaurantUserService>();
             mockedRestaurantUserService.Setup(x => x.GetById(restaurantId)).Returns(resultDbRestaurant);
 
-            var mockedCommentService = new Mock<ICommentService>();
-
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute(typeof(RestaurantController).Assembly);
 
-            var restaurantController = new RestaurantController(mockedRestaurantUserService.Object, mockedCommentService.Object);
+            var restaurantController = new RestaurantController(mockedRestaurantUserService.Object, null);
 
             //Act
             var actionResult = restaurantController.Details(restaurantId) as ViewResult;
@@ -120,12 +115,10 @@
             var mockedRestaurantUserService = new Mock<IRestaurantUserService>();
             mockedRestaurantUserService.Setup(x => x.GetById(restaurantId)).Returns(resultDbRestaurant);
 
-            var mockedCommentService = new Mock<ICommentService>();
-
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute(typeof(RestaurantController).Assembly);
 
-            var restaurantController = new RestaurantController(mockedRestaurantUserService.Object, mockedCommentService.Object);
+            var restaurantController = new RestaurantController(mockedRestaurantUserService.Object, null);
 
             //Act
             var actionResult = restaurantController.Details(restaurantId) as ViewResult;
