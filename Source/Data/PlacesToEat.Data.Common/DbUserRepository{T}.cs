@@ -38,7 +38,7 @@
         public void Delete(T entity)
         {
             entity.IsDeleted = true;
-            entity.DeletedOn = DateTime.Now;
+            entity.DeletedOn = DateTime.UtcNow;
         }
 
         public T GetById(string id)

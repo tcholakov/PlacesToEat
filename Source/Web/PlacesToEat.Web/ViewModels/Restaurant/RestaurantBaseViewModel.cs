@@ -22,7 +22,7 @@
 
         public ICollection<RegularUserViewModel> Favourites { get; set; }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public virtual void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<RestaurantUser, RestaurantMapViewModel>()
                 .ForMember(x => x.Category, opts => opts.MapFrom(x => x.Category == null ? "All" : x.Category.Name));

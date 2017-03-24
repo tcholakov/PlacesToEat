@@ -48,17 +48,7 @@
 
             var restaurant = this.restaurants.GetById(id);
 
-            var restaurantView = new RestaurantDetailedViewModel
-            {
-                Id = restaurant.Id,
-                Address = restaurant.Address,
-                Category = restaurant.Category == null ? "All" : restaurant.Category.Name,
-                Email = restaurant.Email,
-                Name = restaurant.Name,
-                PhoneNumber = restaurant.PhoneNumber,
-                Favourites = restaurant.RegularUsers.AsQueryable().To<RegularUserViewModel>().ToList(),
-                Comments = restaurant.Comments.AsQueryable().OrderByDescending(c => c.CreatedOn).To<CommentViewModel>().ToList()
-            };
+            var restaurantView = this.Mapper.Map<RestaurantDetailedViewModel>(restaurant);
 
             return this.View(restaurantView);
         }
